@@ -6,4 +6,4 @@
 
 ## [TRABALHOS DA FACULDADE](https://github.com/cotabr/projetos.github.io/blob/main/Estrutura/Trabalhos%20da%20Faculdade.md)
 
-## [MAGLEV](MAGLEV.html)
+## [MAGLEV](Teste/MAGLEV.html)
