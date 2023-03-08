@@ -5,3 +5,5 @@
 ## [PROJETOS](https://github.com/cotabr/projetos.github.io/blob/main/Estrutura/Projetos.md)
 
 ## [TRABALHOS DA FACULDADE](https://github.com/cotabr/projetos.github.io/blob/main/Estrutura/Trabalhos%20da%20Faculdade.md)
+
+## [MAGLEV](https://github.com/cotabr/projetos.github.io/blob/main/MAGLEV.html)
