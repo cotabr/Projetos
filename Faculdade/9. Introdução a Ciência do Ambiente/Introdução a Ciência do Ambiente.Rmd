@@ -1,0 +1,29 @@
+---
+title: "**Introdução a Ciência do Ambiente**"
+author: "Yuri Cota"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+## **Ementa**
+
+*Ementa da disciplina*
+
+---
+
+## **Conteúdo**
+
+*Conteúdo do disciplina*
+
+---
+
+## **Trabalhos**
+
+*Trabalhos da disciplina*
+
