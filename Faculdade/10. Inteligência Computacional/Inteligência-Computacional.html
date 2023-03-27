@@ -14,6 +14,222 @@
 <meta name="date" content="2023-03-16" />
 
 <title>Inteligência Computacional</title>
+  
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+var drag;
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, scene, gslabel, ball, ptr, spring, angle, da, trail, t, dt, y0, ball_yo, s, drag;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "2";
+    scene = canvas();
+    "6";
+    scene.title = "A display of most VPython 3D objects";
+    "7";
+    scene.width = 640;
+    "8";
+    scene.height = 400;
+    "10";
+    scene.background = color.gray(.7);
+    "11";
+    scene.center = vector(0, .5, 0);
+    "12";
+    scene.forward = vector(1["-u"]()["*"](.3), 0, 1["-u"]()["*"](1));
+    "13";
+    gslabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vector(1.1, 2, 0), text: "VPython", xoffset: 40, height: 16, color: color.yellow})]);
+    "14";
+    ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](2), 0, 0), size: vector(.3, 2.5, 2.5), color: color.red})]);
+    "15";
+    ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(.25, 1["-u"]()["*"](1.4), 0), size: vector(4.8, .3, 2.5), color: color.red})]);
+    "16";
+    ρσ_interpolate_kwargs.call(this, cylinder, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](2), 2, 1.25), radius: .7, axis: vector(0, 0, 1["-u"]()["*"](2.5)), color: color.blue})]);
+    "17";
+    ball = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vector(2, 1, 0), radius: .5, color: color.cyan})]);
+    "18";
+    ptr = ρσ_interpolate_kwargs.call(this, arrow, [ρσ_desugar_kwargs({pos: vector(0, 0, 2), axis: vector(2, 0, 0), color: color.yellow})]);
+    "19";
+    ρσ_interpolate_kwargs.call(this, cone, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](2), 0, 0), radius: 1, length: 3, color: color.green, opacity: .5})]);
+    "20";
+    ρσ_interpolate_kwargs.call(this, ring, [ρσ_desugar_kwargs({pos: vector(.2, 0, 0), radius: .6, axis: vector(1, 0, 0), thickness: .12, color: color.gray(.4)})]);
+    "21";
+    ρσ_interpolate_kwargs.call(this, ellipsoid, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](.3), 2, 0), color: color.orange, size: vector(.3, 1.5, 1.5)})]);
+    "22";
+    ρσ_interpolate_kwargs.call(this, pyramid, [ρσ_desugar_kwargs({pos: vector(.3, 2, 0), color: vector(0, .5, .25), size: vector(.8, 1.2, 1.2)})]);
+    "23";
+    spring = ρσ_interpolate_kwargs.call(this, helix, [ρσ_desugar_kwargs({pos: vector(2, 1["-u"]()["*"](1.25), 0), radius: .3, axis: vector(0, 1.8, 0), color: color.orange, thickness: .1})]);
+    "24";
+    angle = 0;
+    "25";
+    da = .01;
+    "27";
+    trail = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: color.magenta, radius: .02})]);
+    "28";
+    trail.append(vector(1, 0, 0));
+    "29";
+    trail.append(vector(1, 0, 2));
+    "30";
+    trail.append(vector(2, 0, 2));
+    "32";
+    while (angle["<"](3["*"](pi)["/"](4))) {
+        "33";
+        (await rate(100));
+        "34";
+        ρσ_interpolate_kwargs.call(ptr, ptr.rotate, [ρσ_desugar_kwargs({angle: da, axis: vector(0, 0, 1), origin: ptr.pos})]);
+        "35";
+        trail.append(ptr.pos["+"](ptr.axis));
+        "36";
+        angle=angle["+"](da);
+    }
+    "38";
+    (await sleep(1));
+    (await sleep(.1));
+    "39";
+    scene.autoscale = false;
+    "41";
+    t = 0;
+    "42";
+    dt = .01;
+    "43";
+    y0 = gslabel.pos.y;
+    "44";
+    ball_yo = ball.pos.y;
+    "45";
+    while (t["<"](4)) {
+        "46";
+        (await rate(1["/"](dt)));
+        "47";
+        ball.pos.y = ball_yo["+"](.5["*"](sin(1["-u"]()["*"](4)["*"](t))));
+        "48";
+        spring.length = ball.pos.y["-"](1["*"](spring.pos.y))["-"](1["*"](ball.radius))["+"](.15);
+        "49";
+        gslabel.yoffset = 28["*"](sin(1["-u"]()["*"](4)["*"](t)));
+        "50";
+        t=t["+"](dt);
+    }
+    "53";
+    scene.append_to_caption("Drag the mouse and you'll drag a sphere.\nOn a touch screen, press and hold, then drag.");
+    "55";
+    s = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({color: color.magenta, radius: .3, visible: false})]);
+    "56";
+    drag = false;
+    "58";
+    async function down(ev) {
+        "59";
+        "60";
+        s.pos = ev.pos;
+        "61";
+        s.visible = true;
+        "62";
+        drag = true;
+    };
+    if (!down.__argnames__) Object.defineProperties(down, {
+        __argnames__ : {value: ["ev"]},
+        __module__ : {value: null}
+    });
+
+    "64";
+    async function move(ev) {
+        "65";
+        "66";
+        if (!drag) {
+            return;
+        }
+        "67";
+        s.pos = ev.pos;
+    };
+    if (!move.__argnames__) Object.defineProperties(move, {
+        __argnames__ : {value: ["ev"]},
+        __module__ : {value: null}
+    });
+
+    "69";
+    async function up(ev) {
+        "70";
+        "71";
+        s.visible = false;
+        "72";
+        drag = false;
+    };
+    if (!up.__argnames__) Object.defineProperties(up, {
+        __argnames__ : {value: ["ev"]},
+        __module__ : {value: null}
+    });
+
+    "74";
+    scene.bind("mousedown", down);
+    "76";
+    scene.bind("mousemove", move);
+    "78";
+    scene.bind("mouseup", up);
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
