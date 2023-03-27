@@ -14,222 +14,6 @@
 <meta name="date" content="2023-03-16" />
 
 <title>Inteligência Computacional</title>
-  
-<div id="glowscript" class="glowscript">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
-<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
-<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js">
-<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js">
-<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js">
-<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js">
-<script type="text/javascript"><!--//--><![CDATA[//><!--
-
-// START JAVASCRIPT
-;(function() {;
-var ρσ_modules = {};
-var drag;
-ρσ_modules.pythonize = {};
-
-(function(){
-    function strings() {
-        var string_funcs, exclude, name;
-        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
-        if (!arguments.length) {
-            exclude = (function(){
-                var s = ρσ_set();
-                s.jsset.add("split");
-                s.jsset.add("replace");
-                return s;
-            })();
-        } else if (arguments[0]) {
-            exclude = Array.prototype.slice.call(arguments);
-        } else {
-            exclude = null;
-        }
-        if (exclude) {
-            string_funcs = string_funcs.difference(set(exclude));
-        }
-        var ρσ_Iter0 = string_funcs;
-        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
-        for (var ρσ_Index0 of ρσ_Iter0) {
-            name = ρσ_Index0;
-            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
-        }
-    };
-    if (!strings.__module__) Object.defineProperties(strings, {
-        __module__ : {value: "pythonize"}
-    });
-
-    ρσ_modules.pythonize.strings = strings;
-})();
-async function __main__() {
-"use strict";
-    var display = canvas;
-    var scene = canvas();
-
-    var version, print, arange, __name__, type, ρσ_ls, scene, gslabel, ball, ptr, spring, angle, da, trail, t, dt, y0, ball_yo, s, drag;
-    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
-    Array.prototype['+'] = function(r) {return this.concat(r)}
-    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
-    window.__GSlang = "vpython";
-    print = GSprint;
-    arange = range;
-    __name__ = "__main__";
-    type = pytype;
-    var strings = ρσ_modules.pythonize.strings;
-
-    strings();
-    "2";
-    scene = canvas();
-    "6";
-    scene.title = "A display of most VPython 3D objects";
-    "7";
-    scene.width = 640;
-    "8";
-    scene.height = 400;
-    "10";
-    scene.background = color.gray(.7);
-    "11";
-    scene.center = vector(0, .5, 0);
-    "12";
-    scene.forward = vector(1["-u"]()["*"](.3), 0, 1["-u"]()["*"](1));
-    "13";
-    gslabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vector(1.1, 2, 0), text: "VPython", xoffset: 40, height: 16, color: color.yellow})]);
-    "14";
-    ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](2), 0, 0), size: vector(.3, 2.5, 2.5), color: color.red})]);
-    "15";
-    ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(.25, 1["-u"]()["*"](1.4), 0), size: vector(4.8, .3, 2.5), color: color.red})]);
-    "16";
-    ρσ_interpolate_kwargs.call(this, cylinder, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](2), 2, 1.25), radius: .7, axis: vector(0, 0, 1["-u"]()["*"](2.5)), color: color.blue})]);
-    "17";
-    ball = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vector(2, 1, 0), radius: .5, color: color.cyan})]);
-    "18";
-    ptr = ρσ_interpolate_kwargs.call(this, arrow, [ρσ_desugar_kwargs({pos: vector(0, 0, 2), axis: vector(2, 0, 0), color: color.yellow})]);
-    "19";
-    ρσ_interpolate_kwargs.call(this, cone, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](2), 0, 0), radius: 1, length: 3, color: color.green, opacity: .5})]);
-    "20";
-    ρσ_interpolate_kwargs.call(this, ring, [ρσ_desugar_kwargs({pos: vector(.2, 0, 0), radius: .6, axis: vector(1, 0, 0), thickness: .12, color: color.gray(.4)})]);
-    "21";
-    ρσ_interpolate_kwargs.call(this, ellipsoid, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](.3), 2, 0), color: color.orange, size: vector(.3, 1.5, 1.5)})]);
-    "22";
-    ρσ_interpolate_kwargs.call(this, pyramid, [ρσ_desugar_kwargs({pos: vector(.3, 2, 0), color: vector(0, .5, .25), size: vector(.8, 1.2, 1.2)})]);
-    "23";
-    spring = ρσ_interpolate_kwargs.call(this, helix, [ρσ_desugar_kwargs({pos: vector(2, 1["-u"]()["*"](1.25), 0), radius: .3, axis: vector(0, 1.8, 0), color: color.orange, thickness: .1})]);
-    "24";
-    angle = 0;
-    "25";
-    da = .01;
-    "27";
-    trail = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: color.magenta, radius: .02})]);
-    "28";
-    trail.append(vector(1, 0, 0));
-    "29";
-    trail.append(vector(1, 0, 2));
-    "30";
-    trail.append(vector(2, 0, 2));
-    "32";
-    while (angle["<"](3["*"](pi)["/"](4))) {
-        "33";
-        (await rate(100));
-        "34";
-        ρσ_interpolate_kwargs.call(ptr, ptr.rotate, [ρσ_desugar_kwargs({angle: da, axis: vector(0, 0, 1), origin: ptr.pos})]);
-        "35";
-        trail.append(ptr.pos["+"](ptr.axis));
-        "36";
-        angle=angle["+"](da);
-    }
-    "38";
-    (await sleep(1));
-    (await sleep(.1));
-    "39";
-    scene.autoscale = false;
-    "41";
-    t = 0;
-    "42";
-    dt = .01;
-    "43";
-    y0 = gslabel.pos.y;
-    "44";
-    ball_yo = ball.pos.y;
-    "45";
-    while (t["<"](4)) {
-        "46";
-        (await rate(1["/"](dt)));
-        "47";
-        ball.pos.y = ball_yo["+"](.5["*"](sin(1["-u"]()["*"](4)["*"](t))));
-        "48";
-        spring.length = ball.pos.y["-"](1["*"](spring.pos.y))["-"](1["*"](ball.radius))["+"](.15);
-        "49";
-        gslabel.yoffset = 28["*"](sin(1["-u"]()["*"](4)["*"](t)));
-        "50";
-        t=t["+"](dt);
-    }
-    "53";
-    scene.append_to_caption("Drag the mouse and you'll drag a sphere.\nOn a touch screen, press and hold, then drag.");
-    "55";
-    s = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({color: color.magenta, radius: .3, visible: false})]);
-    "56";
-    drag = false;
-    "58";
-    async function down(ev) {
-        "59";
-        "60";
-        s.pos = ev.pos;
-        "61";
-        s.visible = true;
-        "62";
-        drag = true;
-    };
-    if (!down.__argnames__) Object.defineProperties(down, {
-        __argnames__ : {value: ["ev"]},
-        __module__ : {value: null}
-    });
-
-    "64";
-    async function move(ev) {
-        "65";
-        "66";
-        if (!drag) {
-            return;
-        }
-        "67";
-        s.pos = ev.pos;
-    };
-    if (!move.__argnames__) Object.defineProperties(move, {
-        __argnames__ : {value: ["ev"]},
-        __module__ : {value: null}
-    });
-
-    "69";
-    async function up(ev) {
-        "70";
-        "71";
-        s.visible = false;
-        "72";
-        drag = false;
-    };
-    if (!up.__argnames__) Object.defineProperties(up, {
-        __argnames__ : {value: ["ev"]},
-        __module__ : {value: null}
-    });
-
-    "74";
-    scene.bind("mousedown", down);
-    "76";
-    scene.bind("mousemove", move);
-    "78";
-    scene.bind("mouseup", up);
-};
-if (!__main__.__module__) Object.defineProperties(__main__, {
-    __module__ : {value: null}
-});
-
-;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
-// END JAVASCRIPT
-
-//--><!]]>
-</div>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -465,14 +249,6 @@ if (window.hljs) {
 }
 </script>
 
-
-
-
-
-
-
-
-
 <style type="text/css">
 .main-container {
 max-width: 940px;
@@ -580,6 +356,1764 @@ Computacional</strong></h1>
 <p><em>Ementa da disciplina</em></p>
 <hr />
 </div>
+  
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+var measure, k, sources, drag, dragpos, initialpos, pick, lastdragpos, mode, dim, Gmeasures, fields, grid, constrain, Escale, Gscale, Ascale, bscale, K;
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, wscene, hscene, ELECTRIC, MAGNETIC, SOURCE, VECTOR, UNITVECTOR, LINE, SURFACE, dim, mode, measure, k, q, arrangements, rq, constrain, Qpos, Qneg, Ipos, Ineg, Ecolor, Mcolor, EFcolor, MFcolor, Fcolor, Eshaft, Escale_base, Gscale_base, Ascale_base, Escale, Gscale, Ascale, Gtolerance, dz, offset, rcurve, sources, fields, Gmeasures, FieldDrag, _GS_1, PosBox, NegBox, Title, grid, root, drag, dragpos, pick, lastdragpos, initialpos, K, bscale, border, rmagnetic, r3D, relectric, r2D, menu_options, mmenu, menu_options2, a, sl, s;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "19";
+    wscene = 600;
+    "20";
+    hscene = 600;
+    "21";
+    scene.background = color.white;
+    "22";
+    scene.foreground = color.black;
+    "23";
+    scene.height = hscene;
+    "24";
+    scene.width = wscene;
+    "25";
+    scene.range = 10;
+    "26";
+    scene.fov = .001;
+    "27";
+    scene.userspin = false;
+    "33";
+    scene.align = "left";
+    "36";
+    ELECTRIC = 1;
+    MAGNETIC = 2;
+    "38";
+    SOURCE = 1;
+    VECTOR = 2;
+    UNITVECTOR = 3;
+    LINE = 4;
+    SURFACE = 5;
+    "42";
+    dim = 2;
+    "43";
+    mode = ELECTRIC;
+    "44";
+    measure = VECTOR;
+    "51";
+    k = 1;
+    "52";
+    q = 1;
+    "61";
+    async function capacitor() {
+        var ρσ_ls, data, y;
+        "62";
+        data = ρσ_list_decorate([ "Capacitor", ELECTRIC, 2, .5 ]);
+        "63";
+        for (var ρσ_Index1 = 1["-u"]()["*"](8); ρσ_Index1["<"](6); ρσ_Index1=ρσ_Index1["+"](.5)) {
+            y = ρσ_Index1;
+            "64";
+            data.append(ρσ_list_decorate([ 1, vector(1["-u"]()["*"](2), y, 0) ]));
+        }
+        "65";
+        for (var ρσ_Index2 = 1["-u"]()["*"](8); ρσ_Index2["<"](6); ρσ_Index2=ρσ_Index2["+"](.5)) {
+            y = ρσ_Index2;
+            "66";
+            data.append(ρσ_list_decorate([ 1["-u"]()["*"](1), vector(2, y, 0) ]));
+        }
+        "67";
+        return data;
+    };
+    if (!capacitor.__module__) Object.defineProperties(capacitor, {
+        __module__ : {value: null}
+    });
+
+    "69";
+    async function dipoles() {
+        var ρσ_ls, data, x, y;
+        "70";
+        data = ρσ_list_decorate([ "Dipole array", ELECTRIC, 3, 5 ]);
+        "71";
+        for (var ρσ_Index3 = 1["-u"]()["*"](3); ρσ_Index3["<"](4); ρσ_Index3=ρσ_Index3["+"](2)) {
+            y = ρσ_Index3;
+            "72";
+            for (var ρσ_Index4 = 1["-u"]()["*"](5); ρσ_Index4["<"](5); ρσ_Index4=ρσ_Index4["+"](3)) {
+                x = ρσ_Index4;
+                "73";
+                data.append(ρσ_list_decorate([ 1["-u"]()["*"](1), vector(x, y, 0) ]));
+                "74";
+                data.append(ρσ_list_decorate([ 1, vector(x["+"](1), y, 0) ]));
+            }
+        }
+        "75";
+        return data;
+    };
+    if (!dipoles.__module__) Object.defineProperties(dipoles, {
+        __module__ : {value: null}
+    });
+
+    "77";
+    async function current_sheets() {
+        var ρσ_ls, data, x;
+        "78";
+        data = ρσ_list_decorate([ "Current sheets", MAGNETIC, 2, 1 ]);
+        "79";
+        for (var ρσ_Index5 = 1["-u"]()["*"](6); ρσ_Index5["<"](7); ρσ_Index5++) {
+            x = ρσ_Index5;
+            "80";
+            data.append(ρσ_list_decorate([ 1, vector(x, 1, 0) ]));
+        }
+        "81";
+        for (var ρσ_Index6 = 1["-u"]()["*"](6); ρσ_Index6["<"](7); ρσ_Index6++) {
+            x = ρσ_Index6;
+            "82";
+            data.append(ρσ_list_decorate([ 1["-u"]()["*"](1), vector(x, 1["-u"]()["*"](1), 0) ]));
+        }
+        "83";
+        return data;
+    };
+    if (!current_sheets.__module__) Object.defineProperties(current_sheets, {
+        __module__ : {value: null}
+    });
+
+    "85";
+    arrangements = ρσ_list_decorate([]);
+    "86";
+    arrangements.append((await capacitor()));
+    "87";
+    arrangements.append((await dipoles()));
+    "88";
+    arrangements.append((await current_sheets()));
+    "91";
+    rq = .3;
+    "92";
+    constrain = false;
+    "93";
+    Qpos = color.red;
+    "94";
+    Qneg = color.blue;
+    "95";
+    Ipos = color.magenta;
+    "96";
+    Ineg = color.green;
+    "97";
+    Ecolor = color.orange;
+    "98";
+    Mcolor = color.cyan;
+    "99";
+    EFcolor = vector(.73, .62, 0);
+    "100";
+    MFcolor = vector(0, .7, .7);
+    "101";
+    Fcolor = EFcolor;
+    "102";
+    Eshaft = .2;
+    "103";
+    Escale_base = 10;
+    "104";
+    Gscale_base = 5;
+    "105";
+    Ascale_base = 1;
+    "106";
+    Escale = Escale_base;
+    "107";
+    Gscale = Gscale_base;
+    "108";
+    Ascale = Ascale_base;
+    "109";
+    Gtolerance = .5;
+    "110";
+    dz = vector(0, 0, .1);
+    "111";
+    offset = vector(1.5, 0, 0);
+    "112";
+    rcurve = .07;
+    "113";
+    sources = ρσ_list_decorate([]);
+    "114";
+    fields = ρσ_list_decorate([]);
+    "115";
+    Gmeasures = ρσ_list_decorate([]);
+    "117";
+    function ChargeBox() {;
+    }
+    ChargeBox.prototype.__init__ = async function __init__(center, sign) {
+        var self = this;
+        var ρσ_ls, w, h, t, d, x, y;
+        "119";
+        w = 1.5;
+        "120";
+        h = 1.5;
+        "121";
+        t = .2;
+        "122";
+        d = .2;
+        "123";
+        self.center = center;
+        "124";
+        self.region = ρσ_list_decorate([ center.x["-"](1["*"](w)["/"](2)), center.y["-"](1["*"](h)["/"](2)), center.x["+"](w["/"](2)), center.y["+"](h["/"](2)) ]);
+        "125";
+        self.sign = sign;
+        "126";
+        var ρσ_Iter7 = ρσ_list_decorate([ 1["-u"]()["*"](w)["/"](2), w["/"](2) ]);
+        ρσ_Iter7 = ((typeof ρσ_Iter7[Symbol.iterator] === "function") ? (ρσ_Iter7 instanceof Map ? ρσ_Iter7.keys() : ρσ_Iter7) : Object.keys(ρσ_Iter7));
+        for (var ρσ_Index7 of ρσ_Iter7) {
+            x = ρσ_Index7;
+            "127";
+            ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: center["+"](vector(x, 0, 0)), size: vector(t, h["+"](t), d), color: color.black, pickable: false})]);
+        }
+        "128";
+        var ρσ_Iter8 = ρσ_list_decorate([ 1["-u"]()["*"](h)["/"](2), h["/"](2) ]);
+        ρσ_Iter8 = ((typeof ρσ_Iter8[Symbol.iterator] === "function") ? (ρσ_Iter8 instanceof Map ? ρσ_Iter8.keys() : ρσ_Iter8) : Object.keys(ρσ_Iter8));
+        for (var ρσ_Index8 of ρσ_Iter8) {
+            y = ρσ_Index8;
+            "129";
+            ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: center["+"](vector(0, y, 0)), size: vector(w, t, d), color: color.black})]);
+        }
+        "130";
+        self.icon2d = ρσ_interpolate_kwargs.call(this, cylinder, [ρσ_desugar_kwargs({pos: self.center, radius: rq, axis: vector(0, 0, rq), visible: false})]);
+        "131";
+        self.icon3d = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: self.center, radius: rq, visible: false})]);
+        "132";
+        (await self.update());
+    };
+    if (!ChargeBox.prototype.__init__.__argnames__) Object.defineProperties(ChargeBox.prototype.__init__, {
+        __argnames__ : {value: ["center", "sign"]},
+        __module__ : {value: null}
+    });
+    ChargeBox.__argnames__ = ChargeBox.prototype.__init__.__argnames__;
+    ChargeBox.__handles_kwarg_interpolation__ = ChargeBox.prototype.__init__.__handles_kwarg_interpolation__;
+    ChargeBox.prototype.update = async function update() {
+        var self = this;
+        var ρσ_ls, c;
+        "135";
+        if (self.sign[">"](0)) {
+            "136";
+            if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC))) {
+                "137";
+                c = Qpos;
+                "138";
+            } else {
+                "139";
+                c = Ipos;
+                "140";
+            }
+        } else {
+            "141";
+            if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC))) {
+                "142";
+                c = Qneg;
+                "143";
+            } else {
+                "144";
+                c = Ineg;
+                "145";
+            }
+        }
+        if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3))) {
+            "146";
+            self.icon2d.visible = false;
+            "147";
+            self.icon3d.color = c;
+            "148";
+            self.icon3d.visible = true;
+            "149";
+        } else {
+            "150";
+            self.icon3d.visible = false;
+            "151";
+            self.icon2d.color = c;
+            "152";
+            self.icon2d.visible = true;
+        }
+    };
+    if (!ChargeBox.prototype.update.__module__) Object.defineProperties(ChargeBox.prototype.update, {
+        __module__ : {value: null}
+    });
+    ChargeBox.prototype.visible = async function visible(vis) {
+        var self = this;
+        "155";
+        if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3))) {
+            "156";
+            self.icon3d.visible = vis;
+            "157";
+        } else {
+            "158";
+            self.icon2d.visible = vis;
+        }
+    };
+    if (!ChargeBox.prototype.visible.__argnames__) Object.defineProperties(ChargeBox.prototype.visible, {
+        __argnames__ : {value: ["vis"]},
+        __module__ : {value: null}
+    });
+    ChargeBox.prototype.inbox = async function inbox(point) {
+        var self = this;
+        "161";
+        return ρσ_getitem(self.region, 0)["<="](ρσ_cond_temp = point.x) && ρσ_cond_temp["<="](ρσ_getitem(self.region, 2)) && ρσ_getitem(self.region, 1)["<="](ρσ_cond_temp = point.y) && ρσ_cond_temp["<="](ρσ_getitem(self.region, 3));
+    };
+    if (!ChargeBox.prototype.inbox.__argnames__) Object.defineProperties(ChargeBox.prototype.inbox, {
+        __argnames__ : {value: ["point"]},
+        __module__ : {value: null}
+    });
+    ChargeBox.prototype.__repr__ = async function __repr__() {
+                return "<"["+"](__name__)["+"](".")["+"](this.constructor.name)["+"](" #")["+"](this.ρσ_object_id)["+"](">");
+    };
+    ChargeBox.prototype.__str__ = async function __str__() {
+        return this.__repr__();
+    };
+    Object.defineProperty(ChargeBox.prototype, "__bases__", {value: []});
+    
+    
+    
+    
+
+    "163";
+    function Gmeasure() {;
+    }
+    Gmeasure.prototype.__init__ = async function __init__(labelpos) {
+        var self = this;
+        "165";
+        "166";
+        self.elements = ρσ_list_decorate([]);
+        "167";
+        self.path = ρσ_interpolate_kwargs.call(this, curve, [ρσ_desugar_kwargs({color: color.cyan})]);
+        "168";
+        self.path.append(labelpos);
+        "169";
+        self.label = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: labelpos["+"](offset), box: 0, opacity: 1, color: color.black, visible: 0})]);
+        "170";
+        self.measure = measure;
+        "171";
+        self.turning = 0;
+        "172";
+        self.flux = 0;
+        "173";
+        self.vs = ρσ_list_decorate([]);
+        "174";
+        self.quads = ρσ_list_decorate([]);
+    };
+    if (!Gmeasure.prototype.__init__.__argnames__) Object.defineProperties(Gmeasure.prototype.__init__, {
+        __argnames__ : {value: ["labelpos"]},
+        __module__ : {value: null}
+    });
+    Gmeasure.__argnames__ = Gmeasure.prototype.__init__.__argnames__;
+    Gmeasure.__handles_kwarg_interpolation__ = Gmeasure.prototype.__init__.__handles_kwarg_interpolation__;
+    Gmeasure.prototype.showsource = async function showsource() {
+        var self = this;
+        var ρσ_ls, source, s, info, sign;
+        "177";
+        source = round(self.flux["/"](2["*"](pi)));
+        "178";
+        if (self.turning["<"](0)) {
+            "179";
+            source = 1["-u"]()["*"](source);
+            "180";
+        }
+        if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC))) {
+            "181";
+            if ((self.measure === SURFACE || typeof self.measure === "object" && ρσ_equals(self.measure, SURFACE))) {
+                "182";
+                s = "Q";
+                "183";
+                if (abs(abs(self.turning)["-"](1["*"](2)["*"](pi)))[">"](.3)) {
+                    "184";
+                    self.label.text = "Illegal surface";
+                    "185";
+                    self.label.visible = true;
+                    "186";
+                    return;
+                    "187";
+                }
+            } else {
+                "188";
+                self.label.text = (await DVdisplay(self.flux));
+                "189";
+                self.label.visible = true;
+                "190";
+                return;
+                "191";
+            }
+        } else {
+            "192";
+            if ((self.measure === SURFACE || typeof self.measure === "object" && ρσ_equals(self.measure, SURFACE))) {
+                "193";
+                s = "Qmonopole";
+                "194";
+            } else {
+                "195";
+                s = "I";
+                "196";
+            }
+        }
+        if ((source === 0 || typeof source === "object" && ρσ_equals(source, 0))) {
+            info = s["+"](" = 0");
+        } else {
+            "198";
+            sign = "+";
+            "199";
+            if (source["<"](0)) {
+                sign = "-";
+            }
+            "200";
+            source = round(abs(source));
+            "201";
+            info = s["+"](" = ")["+"](sign)["+"](source.toString());
+        }
+        "202";
+        self.label.text = info;
+        "203";
+        self.label.visible = true;
+    };
+    if (!Gmeasure.prototype.showsource.__module__) Object.defineProperties(Gmeasure.prototype.showsource, {
+        __module__ : {value: null}
+    });
+    Gmeasure.prototype.update = async function update() {
+        var self = this;
+        var ρσ_ls, p1, p2, ρσ_unpack, p, dflux, Gcolor, j, i, G;
+        "206";
+        self.flux = 0;
+        "207";
+        var ρσ_Iter9 = enumerate(self.elements);
+        ρσ_Iter9 = ((typeof ρσ_Iter9[Symbol.iterator] === "function") ? (ρσ_Iter9 instanceof Map ? ρσ_Iter9.keys() : ρσ_Iter9) : Object.keys(ρσ_Iter9));
+        for (var ρσ_Index9 of ρσ_Iter9) {
+            ρσ_unpack = ρσ_Index9;
+            i = ρσ_unpack[0];
+            G = ρσ_unpack[1];
+            "208";
+            p1 = ρσ_getitem(G, 0);
+            "209";
+            p2 = ρσ_getitem(G, 1);
+            "210";
+            ρσ_unpack = (await self.Integralpts(self.measure, p1, p2));
+ρσ_unpack = ρσ_unpack_asarray(2, ρσ_unpack);
+            p = ρσ_unpack[0];
+            dflux = ρσ_unpack[1];
+            "211";
+            self.flux=self.flux["+"](dflux);
+            "213";
+            Gcolor = FieldDrag.fcolor;
+            "214";
+            if ((self.measure === LINE || typeof self.measure === "object" && ρσ_equals(self.measure, LINE))) {
+                "215";
+                if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC))) {
+                    "216";
+                    if (dflux["<"](0)) {
+                        "217";
+                        Gcolor = color.red;
+                        "218";
+                    } else {
+                        "219";
+                        Gcolor = color.blue;
+                    }
+                    "220";
+                    self.label.pos = p2["+"](offset);
+                    "221";
+                    self.label.text = (await DVdisplay(self.flux));
+                    "222";
+                    self.label.visible = true;
+                    "223";
+                } else {
+                    "224";
+                    if (dflux[">"](0)) {
+                        "225";
+                        Gcolor = color.red;
+                        "226";
+                    } else {
+                        "227";
+                        Gcolor = color.blue;
+                    }
+                }
+            }
+            "228";
+            for (var ρσ_Index10 = 0; ρσ_Index10["<"](4); ρσ_Index10++) {
+                j = ρσ_Index10;
+                "229";
+                ρσ_getitem(self.vs, 4["*"](i)["+"](j)).pos = ρσ_getitem(p, j);
+                "230";
+                ρσ_getitem(self.vs, 4["*"](i)["+"](j)).color = Gcolor;
+            }
+        }
+        "231";
+        (await self.showsource());
+    };
+    if (!Gmeasure.prototype.update.__module__) Object.defineProperties(Gmeasure.prototype.update, {
+        __module__ : {value: null}
+    });
+    Gmeasure.prototype.turn = async function turn(v1, v2) {
+        var self = this;
+        var ρσ_ls, d, c, s;
+        "236";
+        v1 = norm(v1);
+        "237";
+        v2 = norm(v2);
+        "238";
+        d = dot(v1, v2);
+        "239";
+        if (d[">"](1)) {
+            d = 1;
+        } else if (d["<"](1["-u"]()["*"](1))) {
+            d = 1["-u"]()["*"](1);
+        }
+        "241";
+        c = acos(d);
+        "242";
+        s = cross(v1, v2).z;
+        "243";
+        if (s["<"](0)) {
+            "244";
+            c = 1["-u"]()["*"](c);
+        }
+        "245";
+        return c;
+    };
+    if (!Gmeasure.prototype.turn.__argnames__) Object.defineProperties(Gmeasure.prototype.turn, {
+        __argnames__ : {value: ["v1", "v2"]},
+        __module__ : {value: null}
+    });
+    Gmeasure.prototype.Integralpts = async function Integralpts(measuretype, p1, p2) {
+        var self = this;
+        var ρσ_ls, field, d, G, p, Bdl, A, rhat;
+        "249";
+        field = (await CalcField(.5["*"](p1["+"](p2))));
+        "250";
+        if ((measuretype === SURFACE || typeof measuretype === "object" && ρσ_equals(measuretype, SURFACE))) {
+            "251";
+            d = .04["*"](Gscale)["*"](norm(field));
+            "252";
+            G = Gscale["*"](field)["+"](d);
+            "253";
+            if (cross(G, p2["-"](1["*"](p1))).z[">"](0)) {
+                "254";
+                p = ρσ_list_decorate([ p1, p1["+"](G), p2["+"](G), p2 ]);
+                "255";
+            } else {
+                "256";
+                p = ρσ_list_decorate([ p1, p2, p2["+"](G), p1["+"](G) ]);
+            }
+            "257";
+            return ρσ_list_decorate([ p, cross(field, p2["-"](1["*"](p1))).z ]);
+            "258";
+        } else {
+            "259";
+            Bdl = dot(field, p2["-"](1["*"](p1)));
+            "260";
+            if (Bdl) {
+                "261";
+                A = Ascale["*"](abs(Bdl["/"](mag(p2["-"](1["*"](p1))))));
+                "262";
+            } else {
+                "263";
+                A = 0;
+            }
+            "264";
+            A = A["+"](.02["*"](Ascale));
+            "265";
+            rhat = norm(cross(p2["-"](1["*"](p1)), vector(0, 0, 1)));
+            "266";
+            p = ρσ_list_decorate([ p1["-"](1["*"](A)["*"](rhat)), p1["+"](A["*"](rhat)), p2["+"](A["*"](rhat)), p2["-"](1["*"](A)["*"](rhat)) ]);
+            "267";
+            return ρσ_list_decorate([ p, Bdl ]);
+        }
+    };
+    if (!Gmeasure.prototype.Integralpts.__argnames__) Object.defineProperties(Gmeasure.prototype.Integralpts, {
+        __argnames__ : {value: ["measuretype", "p1", "p2"]},
+        __module__ : {value: null}
+    });
+    Gmeasure.prototype.Integral = async function Integral(p1, p2, final) {
+        var self = this;
+        var ρσ_ls, newdir, N, olddir, initdir, ρσ_unpack, p, dflux, Gcolor, i, q;
+        "270";
+        newdir = p2["-"](1["*"](p1));
+        "271";
+        N = self.path.npoints;
+        "272";
+        if (N[">"](1)) {
+            "273";
+            olddir = p1["-"](1["*"](ρσ_getitem(self.path.point(N["-"](1["*"](2))), "pos")));
+            "274";
+            self.turning=self.turning["+"]((await self.turn(olddir, newdir)));
+            "275";
+            if (final) {
+                "278";
+                initdir = ρσ_getitem(self.path.point(1), "pos")["-"](1["*"](ρσ_getitem(self.path.point(0), "pos")));
+                "279";
+                self.turning=self.turning["+"]((await self.turn(newdir, initdir)));
+            }
+        }
+        "280";
+        ρσ_unpack = (await self.Integralpts(self.measure, p1, p2));
+ρσ_unpack = ρσ_unpack_asarray(2, ρσ_unpack);
+        p = ρσ_unpack[0];
+        dflux = ρσ_unpack[1];
+        "281";
+        self.flux=self.flux["+"](dflux);
+        "282";
+        if ((self.measure === SURFACE || typeof self.measure === "object" && ρσ_equals(self.measure, SURFACE))) {
+            "283";
+            Gcolor = FieldDrag.fcolor;
+            "284";
+        } else {
+            "285";
+            if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC))) {
+                "286";
+                if (dflux["<"](0)) {
+                    "287";
+                    Gcolor = color.red;
+                    "288";
+                } else {
+                    "289";
+                    Gcolor = color.blue;
+                }
+                "290";
+                self.label.pos = p2["+"](offset);
+                "291";
+                self.label.text = (await DVdisplay(self.flux));
+                "292";
+                self.label.visible = true;
+                "293";
+            } else {
+                "294";
+                if (dflux[">"](0)) {
+                    "295";
+                    Gcolor = color.red;
+                    "296";
+                } else {
+                    "297";
+                    Gcolor = color.blue;
+                }
+            }
+        }
+        "298";
+        self.path.append(p2);
+        "300";
+        for (var ρσ_Index11 = 0; ρσ_Index11["<"](4); ρσ_Index11++) {
+            i = ρσ_Index11;
+            "301";
+            self.vs.append(ρσ_interpolate_kwargs.call(this, vertex, [ρσ_desugar_kwargs({pos: ρσ_getitem(p, i), normal: vector(0, 0, 1), color: Gcolor})]));
+        }
+        "302";
+        q = ρσ_interpolate_kwargs.call(this, quad, [ρσ_desugar_kwargs({v0: ρσ_getitem(self.vs, 1["-u"]()["*"](4)), v1: ρσ_getitem(self.vs, 1["-u"]()["*"](3)), v2: ρσ_getitem(self.vs, 1["-u"]()["*"](2)), v3: ρσ_getitem(self.vs, 1["-u"]()["*"](1))})]);
+        "303";
+        self.quads.append(q);
+        "304";
+        self.elements.append(ρσ_list_decorate([ p1, p2, q ]));
+    };
+    if (!Gmeasure.prototype.Integral.__argnames__) Object.defineProperties(Gmeasure.prototype.Integral, {
+        __argnames__ : {value: ["p1", "p2", "final"]},
+        __module__ : {value: null}
+    });
+    Gmeasure.prototype.visible = async function visible(vis) {
+        var self = this;
+        var ρσ_ls, q;
+        "307";
+        self.label.visible = vis;
+        "308";
+        var ρσ_Iter12 = self.quads;
+        ρσ_Iter12 = ((typeof ρσ_Iter12[Symbol.iterator] === "function") ? (ρσ_Iter12 instanceof Map ? ρσ_Iter12.keys() : ρσ_Iter12) : Object.keys(ρσ_Iter12));
+        for (var ρσ_Index12 of ρσ_Iter12) {
+            q = ρσ_Index12;
+            "309";
+            q.visible = vis;
+        }
+    };
+    if (!Gmeasure.prototype.visible.__argnames__) Object.defineProperties(Gmeasure.prototype.visible, {
+        __argnames__ : {value: ["vis"]},
+        __module__ : {value: null}
+    });
+    Gmeasure.prototype.__repr__ = async function __repr__() {
+                return "<"["+"](__name__)["+"](".")["+"](this.constructor.name)["+"](" #")["+"](this.ρσ_object_id)["+"](">");
+    };
+    Gmeasure.prototype.__str__ = async function __str__() {
+        return this.__repr__();
+    };
+    Object.defineProperty(Gmeasure.prototype, "__bases__", {value: []});
+    
+    
+    
+    
+    
+    
+    
+
+    "311";
+    async function CalcField(pos) {
+        var ρσ_ls, field, r, Q, I;
+        "312";
+        "313";
+        field = vector(0, 0, 0);
+        "314";
+        if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC))) {
+            "315";
+            var ρσ_Iter13 = sources;
+            ρσ_Iter13 = ((typeof ρσ_Iter13[Symbol.iterator] === "function") ? (ρσ_Iter13 instanceof Map ? ρσ_Iter13.keys() : ρσ_Iter13) : Object.keys(ρσ_Iter13));
+            for (var ρσ_Index13 of ρσ_Iter13) {
+                Q = ρσ_Index13;
+                "316";
+                r = pos["-"](1["*"](Q.pos));
+                "317";
+                if (mag(r)[">"](Q.radius)) {
+                    "318";
+                    if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3))) {
+                        "319";
+                        field = field["+"](k["*"](Q.source)["*"](norm(r))["/"](Math.pow(mag(r), 2)));
+                        "320";
+                    } else {
+                        "321";
+                        field = field["+"](k["*"](Q.source)["*"](norm(r))["/"](mag(r)));
+                        "322";
+                    }
+                } else {
+                    "323";
+                    return vector(0, 0, 0);
+                    "324";
+                }
+            }
+        } else {
+            "325";
+            var ρσ_Iter14 = sources;
+            ρσ_Iter14 = ((typeof ρσ_Iter14[Symbol.iterator] === "function") ? (ρσ_Iter14 instanceof Map ? ρσ_Iter14.keys() : ρσ_Iter14) : Object.keys(ρσ_Iter14));
+            for (var ρσ_Index14 of ρσ_Iter14) {
+                I = ρσ_Index14;
+                "326";
+                r = pos["-"](1["*"](I.pos));
+                "327";
+                if (mag(r)[">"](I.radius)) {
+                    "328";
+                    field = field["+"](k["*"](I.source)["*"](cross(vector(0, 0, 1), norm(r)))["/"](mag(r)));
+                    "329";
+                } else {
+                    "330";
+                    return vector(0, 0, 0);
+                }
+            }
+        }
+        "331";
+        return field;
+    };
+    if (!CalcField.__argnames__) Object.defineProperties(CalcField, {
+        __argnames__ : {value: ["pos"]},
+        __module__ : {value: null}
+    });
+
+    "333";
+    async function DVdisplay(DV) {
+        var ρσ_ls, sign, dv;
+        "334";
+        if (DV[">"](0)) {
+            "335";
+            sign = "-";
+            "336";
+        } else {
+            "337";
+            sign = "+";
+        }
+        "338";
+        dv = round(abs(100["*"](DV)))["/"](10);
+        "339";
+        return "ΔV = "["+"](sign)["+"](dv.toString());
+    };
+    if (!DVdisplay.__argnames__) Object.defineProperties(DVdisplay, {
+        __argnames__ : {value: ["DV"]},
+        __module__ : {value: null}
+    });
+
+    "342";
+    async function FieldUpdate() {
+        var ρσ_ls, f, G;
+        "343";
+        var ρσ_Iter15 = fields;
+        ρσ_Iter15 = ((typeof ρσ_Iter15[Symbol.iterator] === "function") ? (ρσ_Iter15 instanceof Map ? ρσ_Iter15.keys() : ρσ_Iter15) : Object.keys(ρσ_Iter15));
+        for (var ρσ_Index15 of ρσ_Iter15) {
+            f = ρσ_Index15;
+            "344";
+            if ((ρσ_getitem(f, 0) === VECTOR || typeof ρσ_getitem(f, 0) === "object" && ρσ_equals(ρσ_getitem(f, 0), VECTOR))) {
+                "345";
+                ρσ_getitem(f, 1).axis = Escale["*"]((await CalcField(ρσ_getitem(f, 1).pos)));
+                "346";
+            } else {
+                "347";
+                ρσ_getitem(f, 1).axis = norm((await CalcField(ρσ_getitem(f, 1).pos)));
+            }
+        }
+        "348";
+        var ρσ_Iter16 = Gmeasures;
+        ρσ_Iter16 = ((typeof ρσ_Iter16[Symbol.iterator] === "function") ? (ρσ_Iter16 instanceof Map ? ρσ_Iter16.keys() : ρσ_Iter16) : Object.keys(ρσ_Iter16));
+        for (var ρσ_Index16 of ρσ_Iter16) {
+            G = ρσ_Index16;
+            "349";
+            (await G.update());
+        }
+    };
+    if (!FieldUpdate.__module__) Object.defineProperties(FieldUpdate, {
+        __module__ : {value: null}
+    });
+
+    "351";
+    async function createsource(newpos, newq) {
+        var ρσ_ls, newcolor;
+        "352";
+        "353";
+        if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC))) {
+            "354";
+            if (newq[">"](0)) {
+                "355";
+                newcolor = Qpos;
+                "356";
+            } else {
+                "357";
+                newcolor = Qneg;
+                "358";
+            }
+        } else {
+            "359";
+            if (newq[">"](0)) {
+                "360";
+                newcolor = Ipos;
+                "361";
+            } else {
+                "362";
+                newcolor = Ineg;
+                "363";
+            }
+        }
+        if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3))) {
+            "364";
+            sources.append(ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: newpos, radius: rq, color: newcolor, source: newq})]));
+            "365";
+        } else {
+            "366";
+            sources.append(ρσ_interpolate_kwargs.call(this, cylinder, [ρσ_desugar_kwargs({pos: newpos, axis: vector(0, 0, rq), radius: rq, color: newcolor, source: newq})]));
+        }
+    };
+    if (!createsource.__argnames__) Object.defineProperties(createsource, {
+        __argnames__ : {value: ["newpos", "newq"]},
+        __module__ : {value: null}
+    });
+
+    "368";
+    function Grid() {;
+    }
+    Grid.prototype.__init__ = async function __init__() {
+        var self = this;
+        var ρσ_ls, y, x;
+        "370";
+        self.pts = ρσ_list_decorate([]);
+        "371";
+        for (var ρσ_Index17 = 1["-u"]()["*"](9); ρσ_Index17["<"](10); ρσ_Index17++) {
+            x = ρσ_Index17;
+            "372";
+            for (var ρσ_Index18 = 1["-u"]()["*"](9); ρσ_Index18["<"](8); ρσ_Index18++) {
+                y = ρσ_Index18;
+                "373";
+                self.pts.append(ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vector(x, y, 0), radius: .05, color: color.black})]));
+            }
+        }
+    };
+    if (!Grid.prototype.__init__.__module__) Object.defineProperties(Grid.prototype.__init__, {
+        __module__ : {value: null}
+    });
+    Grid.__argnames__ = Grid.prototype.__init__.__argnames__;
+    Grid.__handles_kwarg_interpolation__ = Grid.prototype.__init__.__handles_kwarg_interpolation__;
+    Grid.prototype.visible = async function visible(vis) {
+        var self = this;
+        var ρσ_ls, s;
+        "376";
+        var ρσ_Iter19 = self.pts;
+        ρσ_Iter19 = ((typeof ρσ_Iter19[Symbol.iterator] === "function") ? (ρσ_Iter19 instanceof Map ? ρσ_Iter19.keys() : ρσ_Iter19) : Object.keys(ρσ_Iter19));
+        for (var ρσ_Index19 of ρσ_Iter19) {
+            s = ρσ_Index19;
+            "377";
+            s.visible = vis;
+        }
+    };
+    if (!Grid.prototype.visible.__argnames__) Object.defineProperties(Grid.prototype.visible, {
+        __argnames__ : {value: ["vis"]},
+        __module__ : {value: null}
+    });
+    Grid.prototype.__repr__ = async function __repr__() {
+                return "<"["+"](__name__)["+"](".")["+"](this.constructor.name)["+"](" #")["+"](this.ρσ_object_id)["+"](">");
+    };
+    Grid.prototype.__str__ = async function __str__() {
+        return this.__repr__();
+    };
+    Object.defineProperty(Grid.prototype, "__bases__", {value: []});
+    
+    
+
+    "379";
+    async function setFielddragcolor() {
+        "380";
+        if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC))) {
+            "381";
+            FieldDrag.color = Ecolor;
+            "382";
+            FieldDrag.fcolor = EFcolor;
+            "383";
+        } else {
+            "384";
+            FieldDrag.color = Mcolor;
+            "385";
+            FieldDrag.fcolor = MFcolor;
+        }
+    };
+    if (!setFielddragcolor.__module__) Object.defineProperties(setFielddragcolor, {
+        __module__ : {value: null}
+    });
+
+    "387";
+    FieldDrag = ρσ_interpolate_kwargs.call(this, arrow, [ρσ_desugar_kwargs({axis: vector(0, 0, 0), shaftwidth: Eshaft})]);
+    "388";
+    (await setFielddragcolor());
+    "390";
+    _GS_1 = new ChargeBox;
+    (await _GS_1.__init__(vector(1["-u"]()["*"](9), 8.5, 0), 1));
+    PosBox = _GS_1;
+    "391";
+    _GS_1 = new ChargeBox;
+    (await _GS_1.__init__(vector(9, 8.5, 0), 1["-u"]()["*"](1)));
+    NegBox = _GS_1;
+    "392";
+    Title = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vector(0, 8.8, 0), opacity: 1})]);
+    "393";
+    grid = null;
+    "394";
+    root = null;
+    "396";
+    drag = null;
+    "397";
+    dragpos = null;
+    "398";
+    pick = null;
+    "399";
+    lastdragpos = null;
+    "400";
+    initialpos = null;
+    "402";
+    async function grab(evt) {
+        var ρσ_ls, m, p, pos, _GS_1, newq;
+        "403";
+        "404";
+        m = scene.mouse;
+        "405";
+        p = m.pick();
+        "406";
+        if (!ρσ_in(p, sources) && m.pos.y["<"](7.4)) {
+            "407";
+            pos = m.pos;
+            "408";
+            initialpos = vector(pos);
+            "409";
+            dragpos = m.pos;
+            "410";
+            lastdragpos = dragpos;
+            "411";
+            drag = measure;
+            "412";
+            if (constrain) {
+                "413";
+                pos = vector(round(m.pos.x), round(m.pos.y), round(m.pos.z));
+                "414";
+            }
+            if ((measure === VECTOR || typeof measure === "object" && ρσ_equals(measure, VECTOR))) {
+                "415";
+                FieldDrag.pos = m.pos;
+                "416";
+                FieldDrag.axis = Escale["*"]((await CalcField(pos)));
+                "417";
+            } else if ((measure === UNITVECTOR || typeof measure === "object" && ρσ_equals(measure, UNITVECTOR))) {
+                "418";
+                FieldDrag.pos = m.pos;
+                "419";
+                FieldDrag.axis = norm(Escale["*"]((await CalcField(pos))));
+                "420";
+            } else if ((measure === LINE || typeof measure === "object" && ρσ_equals(measure, LINE)) || (measure === SURFACE || typeof measure === "object" && ρσ_equals(measure, SURFACE))) {
+                "421";
+                _GS_1 = new Gmeasure;
+                (await _GS_1.__init__(m.pos));
+                Gmeasures.append(_GS_1);
+                "422";
+            }
+        } else if (ρσ_in(p, ρσ_list_decorate([ PosBox.icon2d, PosBox.icon3d, NegBox.icon2d, NegBox.icon3d ]))) {
+            "423";
+            if (p === PosBox.icon2d || p === PosBox.icon3d) {
+                "424";
+                newq = q;
+                "425";
+                (await PosBox.visible(false));
+                "426";
+            } else if (p === NegBox.icon2d || p === NegBox.icon3d) {
+                "427";
+                newq = 1["-u"]()["*"](q);
+                "428";
+                (await NegBox.visible(false));
+            }
+            "429";
+            (await createsource(m.pos, newq));
+            "430";
+            pick = ρσ_getitem(sources, 1["-u"]()["*"](1));
+            "431";
+            drag = SOURCE;
+            "432";
+            dragpos = m.pos;
+            "433";
+        } else if (p) {
+            "434";
+            pick = p;
+            "435";
+            drag = SOURCE;
+            "436";
+            dragpos = m.pos;
+            "437";
+            FieldDrag.axis = vector(0, 0, 0);
+        }
+    };
+    if (!grab.__argnames__) Object.defineProperties(grab, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "439";
+    async function move(evt) {
+        var ρσ_ls, m;
+        "440";
+        "441";
+        if (!drag) {
+            return;
+        }
+        "442";
+        m = scene.mouse;
+        "443";
+        if ((m.pos === dragpos || typeof m.pos === "object" && ρσ_equals(m.pos, dragpos))) {
+            return;
+        }
+        "444";
+        if (pick) {
+            pick.pos = m.pos;
+        }
+        "445";
+        (await Drag());
+        "446";
+        dragpos = m.pos;
+    };
+    if (!move.__argnames__) Object.defineProperties(move, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "448";
+    async function drop(evt) {
+        var ρσ_ls, m, pos, r, nsteps, dr, final, nn;
+        "449";
+        "450";
+        m = scene.mouse;
+        "451";
+        if ((drag === SOURCE || typeof drag === "object" && ρσ_equals(drag, SOURCE))) {
+            "452";
+            if ((await PosBox.inbox(m.pos)) || (await NegBox.inbox(m.pos))) {
+                "453";
+                sources.remove(pick);
+                "454";
+                pick.visible = false;
+                "455";
+                pick = null;
+                "456";
+            }
+            if (constrain) {
+                "457";
+                pick.pos = vector(round(pick.pos.x), round(pick.pos.y), round(pick.pos.z));
+            }
+            "458";
+            drag = null;
+            "459";
+            (await PosBox.visible(true));
+            "460";
+            (await NegBox.visible(true));
+            "461";
+            pick = null;
+            "462";
+            (await FieldUpdate());
+            "463";
+            dragpos = null;
+            "465";
+        } else if ((drag === VECTOR || typeof drag === "object" && ρσ_equals(drag, VECTOR)) || (drag === UNITVECTOR || typeof drag === "object" && ρσ_equals(drag, UNITVECTOR))) {
+            "467";
+            pos = FieldDrag.pos;
+            "468";
+            if (constrain) {
+                "469";
+                pos = vector(round(FieldDrag.pos.x), round(FieldDrag.pos.y), round(FieldDrag.pos.z));
+                "470";
+            }
+            if ((drag === VECTOR || typeof drag === "object" && ρσ_equals(drag, VECTOR))) {
+                "471";
+                fields.append([VECTOR, ρσ_interpolate_kwargs.call(this, arrow, [ρσ_desugar_kwargs({pos: pos, axis: Escale["*"]((await CalcField(pos))), color: FieldDrag.color, shaftwidth: Eshaft})])]);
+                "472";
+            } else if ((drag === UNITVECTOR || typeof drag === "object" && ρσ_equals(drag, UNITVECTOR))) {
+                "473";
+                fields.append([UNITVECTOR, ρσ_interpolate_kwargs.call(this, arrow, [ρσ_desugar_kwargs({pos: pos, axis: norm((await CalcField(pos))), color: FieldDrag.color, shaftwidth: Eshaft})])]);
+            }
+            "474";
+            FieldDrag.axis = vector(0, 0, 0);
+            "475";
+            drag = null;
+            "476";
+            dragpos = null;
+            "478";
+        } else if ((drag === SURFACE || typeof drag === "object" && ρσ_equals(drag, SURFACE)) || (drag === LINE || typeof drag === "object" && ρσ_equals(drag, LINE))) {
+            "479";
+            drag = null;
+            "480";
+            FieldDrag.axis = vector(0, 0, 0);
+            "481";
+            if ((mode === ELECTRIC || typeof mode === "object" && ρσ_equals(mode, ELECTRIC)) && (measure === LINE || typeof measure === "object" && ρσ_equals(measure, LINE))) {
+                return;
+            }
+            "482";
+            dragpos = lastdragpos;
+            "483";
+            r = initialpos["-"](1["*"](dragpos));
+            "484";
+            nsteps = int(mag(r)["/"](Gtolerance))["+"](1);
+            "485";
+            dr = r["/"](nsteps);
+            "486";
+            final = false;
+            "487";
+            for (var ρσ_Index20 = 0; ρσ_Index20["<"](nsteps); ρσ_Index20++) {
+                nn = ρσ_Index20;
+                "488";
+                if (ρσ_equals(nn, nsteps["-"](1["*"](1)))) {
+                    "489";
+                    final = true;
+                }
+                "490";
+                (await ρσ_getitem(Gmeasures, 1["-u"]()["*"](1)).Integral(dragpos, dragpos["+"](dr), final));
+                "491";
+                dragpos = dragpos["+"](dr);
+            }
+            "492";
+            (await ρσ_getitem(Gmeasures, 1["-u"]()["*"](1)).showsource());
+            "493";
+            dragpos = null;
+        }
+    };
+    if (!drop.__argnames__) Object.defineProperties(drop, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "495";
+    async function Drag() {
+        var ρσ_ls, m, newpos;
+        "496";
+        "497";
+        m = scene.mouse;
+        "498";
+        if ((drag === SOURCE || typeof drag === "object" && ρσ_equals(drag, SOURCE))) {
+            "499";
+            (await FieldUpdate());
+            "500";
+        } else if ((drag === VECTOR || typeof drag === "object" && ρσ_equals(drag, VECTOR)) || (drag === UNITVECTOR || typeof drag === "object" && ρσ_equals(drag, UNITVECTOR))) {
+            "501";
+            FieldDrag.pos = m.pos;
+            "502";
+            if ((drag === VECTOR || typeof drag === "object" && ρσ_equals(drag, VECTOR))) {
+                "503";
+                FieldDrag.axis = Escale["*"]((await CalcField(m.pos)));
+                "504";
+            } else {
+                "505";
+                FieldDrag.axis = norm((await CalcField(m.pos)));
+            }
+            "506";
+            dragpos = m.pos;
+            "507";
+        } else if ((drag === LINE || typeof drag === "object" && ρσ_equals(drag, LINE)) || (drag === SURFACE || typeof drag === "object" && ρσ_equals(drag, SURFACE))) {
+            "508";
+            if (len(ρσ_getitem(Gmeasures, 1["-u"]()["*"](1)).elements)[">"](2) && mag(m.pos["-"](1["*"](initialpos)))["<="](Gtolerance)) {
+                "509";
+                drag = null;
+                "510";
+                (await ρσ_getitem(Gmeasures, 1["-u"]()["*"](1)).Integral(lastdragpos, initialpos, true));
+                "511";
+                (await ρσ_getitem(Gmeasures, 1["-u"]()["*"](1)).showsource());
+                "512";
+                FieldDrag.axis = vector(0, 0, 0);
+                "513";
+                dragpos = null;
+                "514";
+            } else if (mag(m.pos["-"](1["*"](lastdragpos)))[">"](Gtolerance)) {
+                "515";
+                newpos = m.pos;
+                "516";
+                (await ρσ_getitem(Gmeasures, 1["-u"]()["*"](1)).Integral(lastdragpos, newpos, false));
+                "517";
+                FieldDrag.pos = newpos;
+                "518";
+                FieldDrag.axis = Escale["*"]((await CalcField(newpos)));
+                "519";
+                lastdragpos = newpos;
+            }
+        }
+    };
+    if (!Drag.__module__) Object.defineProperties(Drag, {
+        __module__ : {value: null}
+    });
+
+    "521";
+    async function getsources(evt) {
+        var ρσ_ls, choice, i, a, data, scale, newq, newpos, pt;
+        "522";
+        "523";
+        (await clearall());
+        "524";
+        choice = evt.selected;
+        "525";
+        i = 0;
+        "526";
+        var ρσ_Iter21 = arrangements;
+        ρσ_Iter21 = ((typeof ρσ_Iter21[Symbol.iterator] === "function") ? (ρσ_Iter21 instanceof Map ? ρσ_Iter21.keys() : ρσ_Iter21) : Object.keys(ρσ_Iter21));
+        for (var ρσ_Index21 of ρσ_Iter21) {
+            a = ρσ_Index21;
+            "527";
+            if ((choice === ρσ_getitem(a, 0) || typeof choice === "object" && ρσ_equals(choice, ρσ_getitem(a, 0)))) {
+                "528";
+                break;
+            }
+            "529";
+            i=i["+"](1);
+            "530";
+        }
+        if (i[">="](len(arrangements))) {
+            return;
+        }
+        "531";
+        data = ρσ_getitem(arrangements, i);
+        "532";
+        mode = ρσ_getitem(data, 1);
+        "533";
+        (await setmode(null, mode));
+        "534";
+        dim = ρσ_getitem(data, 2);
+        "535";
+        (await setdim(null, dim));
+        "536";
+        scale = ρσ_getitem(data, 3);
+        "537";
+        (await setscale(scale));
+        "538";
+        (await setmeasure(null, "Vector"));
+        "539";
+        (await PosBox.update());
+        "540";
+        (await NegBox.update());
+        "541";
+        var ρσ_Iter22 = data.slice(4);
+        ρσ_Iter22 = ((typeof ρσ_Iter22[Symbol.iterator] === "function") ? (ρσ_Iter22 instanceof Map ? ρσ_Iter22.keys() : ρσ_Iter22) : Object.keys(ρσ_Iter22));
+        for (var ρσ_Index22 of ρσ_Iter22) {
+            pt = ρσ_Index22;
+            "542";
+            newq = ρσ_getitem(pt, 0);
+            "543";
+            newpos = ρσ_getitem(pt, 1);
+            "544";
+            (await createsource(newpos, newq));
+        }
+    };
+    if (!getsources.__argnames__) Object.defineProperties(getsources, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "546";
+    async function clearmeasures() {
+        var ρσ_ls, obj;
+        "547";
+        "548";
+        var ρσ_Iter23 = fields;
+        ρσ_Iter23 = ((typeof ρσ_Iter23[Symbol.iterator] === "function") ? (ρσ_Iter23 instanceof Map ? ρσ_Iter23.keys() : ρσ_Iter23) : Object.keys(ρσ_Iter23));
+        for (var ρσ_Index23 of ρσ_Iter23) {
+            obj = ρσ_Index23;
+            "549";
+            ρσ_getitem(obj, 1).visible = false;
+        }
+        "550";
+        fields = ρσ_list_decorate([]);
+        "551";
+        var ρσ_Iter24 = Gmeasures;
+        ρσ_Iter24 = ((typeof ρσ_Iter24[Symbol.iterator] === "function") ? (ρσ_Iter24 instanceof Map ? ρσ_Iter24.keys() : ρσ_Iter24) : Object.keys(ρσ_Iter24));
+        for (var ρσ_Index24 of ρσ_Iter24) {
+            obj = ρσ_Index24;
+            "552";
+            (await obj.visible(false));
+            "553";
+            obj.path.clear();
+        }
+        "554";
+        Gmeasures = ρσ_list_decorate([]);
+    };
+    if (!clearmeasures.__module__) Object.defineProperties(clearmeasures, {
+        __module__ : {value: null}
+    });
+
+    "556";
+    async function clearall() {
+        var ρσ_ls, obj;
+        "557";
+        "558";
+        var ρσ_Iter25 = sources;
+        ρσ_Iter25 = ((typeof ρσ_Iter25[Symbol.iterator] === "function") ? (ρσ_Iter25 instanceof Map ? ρσ_Iter25.keys() : ρσ_Iter25) : Object.keys(ρσ_Iter25));
+        for (var ρσ_Index25 of ρσ_Iter25) {
+            obj = ρσ_Index25;
+            "559";
+            obj.visible = false;
+        }
+        "560";
+        sources = ρσ_list_decorate([]);
+        "561";
+        (await clearmeasures());
+        "562";
+        FieldDrag.axis = vector(0, 0, 0);
+        "563";
+        FieldDrag.visible = true;
+        "564";
+        (await setscale(Escale_base));
+    };
+    if (!clearall.__module__) Object.defineProperties(clearall, {
+        __module__ : {value: null}
+    });
+
+    "566";
+    async function pre_setdim(evt) {
+        "567";
+        (await setdim(evt, null));
+    };
+    if (!pre_setdim.__argnames__) Object.defineProperties(pre_setdim, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "569";
+    async function setdim(evt, newdim) {
+        "570";
+        "571";
+        dim = newdim;
+        "572";
+        if (newdim === null) {
+            "573";
+            if ((evt.id === "3D" || typeof evt.id === "object" && ρσ_equals(evt.id, "3D"))) {
+                dim = 3;
+            } else {
+                dim = 2;
+            }
+            "575";
+        }
+        if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3)) && (mode === MAGNETIC || typeof mode === "object" && ρσ_equals(mode, MAGNETIC))) {
+            "576";
+            dim = 2;
+            "577";
+            r2D.checked = true;
+            "578";
+            return;
+            "579";
+        }
+        if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3))) {
+            "580";
+            r3D.checked = true;
+            "581";
+        } else {
+            "582";
+            r2D.checked = true;
+        }
+        "583";
+        (await PosBox.update());
+        "584";
+        (await NegBox.update());
+        "585";
+        (await setmode(null, mode));
+        "586";
+        (await clearall());
+    };
+    if (!setdim.__argnames__) Object.defineProperties(setdim, {
+        __argnames__ : {value: ["evt", "newdim"]},
+        __module__ : {value: null}
+    });
+
+    "588";
+    async function pre_setmode(evt) {
+        "589";
+        (await setmode(evt, null));
+    };
+    if (!pre_setmode.__argnames__) Object.defineProperties(pre_setmode, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "591";
+    async function setmode(evt, newmode) {
+        "592";
+        "593";
+        if (newmode === null) {
+            "594";
+            if ((evt.id === "magnetic" || typeof evt.id === "object" && ρσ_equals(evt.id, "magnetic"))) {
+                mode = MAGNETIC;
+            } else {
+                mode = ELECTRIC;
+            }
+            "596";
+        } else {
+            "597";
+            mode = newmode;
+            "598";
+        }
+        if ((mode === MAGNETIC || typeof mode === "object" && ρσ_equals(mode, MAGNETIC))) {
+            "599";
+            rmagnetic.checked = true;
+            "600";
+            relectric.checked = false;
+            "601";
+            Title.text = "Drag +z or -z current-carrying wires into scene.\nThen click or drag.";
+            "602";
+            if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3))) {
+                "603";
+                (await setdim(null, 3));
+                "604";
+            }
+        } else {
+            "605";
+            mode = ELECTRIC;
+            "606";
+            rmagnetic.checked = false;
+            "607";
+            relectric.checked = true;
+            "608";
+            if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3))) {
+                "609";
+                Title.text = "Drag positive or negative point charges into scene.\nThen click or drag.";
+                "610";
+            } else {
+                "611";
+                Title.text = "Drag positively or negatively charged long rods into scene.\nThen click or drag.";
+            }
+        }
+        "612";
+        (await setFielddragcolor());
+        "613";
+        (await PosBox.update());
+        "614";
+        (await NegBox.update());
+        "615";
+        (await clearall());
+    };
+    if (!setmode.__argnames__) Object.defineProperties(setmode, {
+        __argnames__ : {value: ["evt", "newmode"]},
+        __module__ : {value: null}
+    });
+
+    "617";
+    async function setgrid(evt) {
+        var ρσ_ls, _GS_1;
+        "618";
+        "619";
+        if (evt.checked) {
+            "620";
+            if (!grid) {
+                "621";
+                _GS_1 = new Grid;
+                (await _GS_1.__init__());
+                grid = _GS_1;
+                "622";
+            } else {
+                "623";
+                (await grid.visible(true));
+                "624";
+            }
+        } else {
+            "625";
+            (await grid.visible(false));
+        }
+    };
+    if (!setgrid.__argnames__) Object.defineProperties(setgrid, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "627";
+    async function setconstrain(evt) {
+        "628";
+        "629";
+        constrain = evt.checked;
+    };
+    if (!setconstrain.__argnames__) Object.defineProperties(setconstrain, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "631";
+    async function pre_setscale(evt) {
+        "632";
+        (await setscale(null));
+    };
+    if (!pre_setscale.__argnames__) Object.defineProperties(pre_setscale, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "634";
+    async function setscale(newscale) {
+        var ρσ_ls, factor;
+        "635";
+        "636";
+        if ((newscale === null || typeof newscale === "object" && ρσ_equals(newscale, null))) {
+            "637";
+            newscale = bscale;
+            "638";
+        } else {
+            "639";
+            bscale = newscale;
+        }
+        "640";
+        factor = newscale["/"](Escale_base);
+        "641";
+        Escale = factor["*"](Escale_base);
+        "642";
+        Gscale = factor["*"](Gscale_base);
+        "643";
+        Ascale = factor["*"](Ascale_base);
+        "644";
+        (await FieldUpdate());
+    };
+    if (!setscale.__argnames__) Object.defineProperties(setscale, {
+        __argnames__ : {value: ["newscale"]},
+        __module__ : {value: null}
+    });
+
+    "646";
+    async function pre_setmeasure(evt) {
+        "647";
+        (await setmeasure(evt, null));
+    };
+    if (!pre_setmeasure.__argnames__) Object.defineProperties(pre_setmeasure, {
+        __argnames__ : {value: ["evt"]},
+        __module__ : {value: null}
+    });
+
+    "649";
+    async function setmeasure(evt, m) {
+        var ρσ_ls, item;
+        "650";
+        "651";
+        if (m === null) {
+            "652";
+            item = evt.selected;
+            "653";
+        } else {
+            "654";
+            item = m;
+            "655";
+        }
+        if ((item === "Vector" || typeof item === "object" && ρσ_equals(item, "Vector"))) {
+            measure = VECTOR;
+        } else if ((item === "Unit vector" || typeof item === "object" && ρσ_equals(item, "Unit vector"))) {
+            measure = UNITVECTOR;
+        } else if ((item === "Electric potential" || typeof item === "object" && ρσ_equals(item, "Electric potential"))) {
+            "658";
+            if ((mode === MAGNETIC || typeof mode === "object" && ρσ_equals(mode, MAGNETIC))) {
+                "659";
+                (await setmode(null, ELECTRIC));
+            }
+            "660";
+            measure = LINE;
+            "661";
+        } else if ((item === "Gauss's law" || typeof item === "object" && ρσ_equals(item, "Gauss's law"))) {
+            "662";
+            if ((dim === 3 || typeof dim === "object" && ρσ_equals(dim, 3))) {
+                "663";
+                (await setdim(null, 2));
+            }
+            "664";
+            measure = SURFACE;
+            "665";
+        } else if ((item === "Ampere's law" || typeof item === "object" && ρσ_equals(item, "Ampere's law"))) {
+            "666";
+            if ((mode !== MAGNETIC && (typeof mode !== "object" || ρσ_not_equals(mode, MAGNETIC)))) {
+                "667";
+                (await setmode(null, MAGNETIC));
+            }
+            "668";
+            measure = LINE;
+        }
+        "669";
+        mmenu.selected = item;
+    };
+    if (!setmeasure.__argnames__) Object.defineProperties(setmeasure, {
+        __argnames__ : {value: ["evt", "m"]},
+        __module__ : {value: null}
+    });
+
+    "671";
+    scene.bind("mousedown", grab);
+    "672";
+    scene.bind("mousemove", move);
+    "673";
+    scene.bind("mouseup", drop);
+    "675";
+    K = 1e5;
+    "676";
+    bscale = 0;
+    "678";
+    async function set_bscale() {
+        "679";
+        "680";
+        bscale = sl.value["*"](50)["/"](K);
+        "681";
+        (await pre_setscale(bscale));
+    };
+    if (!set_bscale.__module__) Object.defineProperties(set_bscale, {
+        __module__ : {value: null}
+    });
+
+    "683";
+    border = "  ";
+    "684";
+    scene.caption = border;
+    "685";
+    rmagnetic = ρσ_interpolate_kwargs.call(this, radio, [ρσ_desugar_kwargs({id: "magnetic", bind: pre_setmode, name: "EorB"})]);
+    "686";
+    scene.append_to_caption(" Magnetic  ");
+    "687";
+    r3D = ρσ_interpolate_kwargs.call(this, radio, [ρσ_desugar_kwargs({id: "3D", bind: pre_setdim, name: "2Dor3D"})]);
+    "688";
+    scene.append_to_caption(" 3D\n"["+"](border));
+    "689";
+    relectric = ρσ_interpolate_kwargs.call(this, radio, [ρσ_desugar_kwargs({id: "electric", bind: pre_setmode, checked: true, name: "EorB"})]);
+    "690";
+    scene.append_to_caption(" Electric    ");
+    "691";
+    r2D = ρσ_interpolate_kwargs.call(this, radio, [ρσ_desugar_kwargs({id: "2D", bind: pre_setdim, checked: true, name: "2Dor3D"})]);
+    "692";
+    scene.append_to_caption(" 2D\n\n"["+"](border));
+    "694";
+    ρσ_interpolate_kwargs.call(this, checkbox, [ρσ_desugar_kwargs({bind: setgrid})]);
+    "695";
+    scene.append_to_caption(" Show Grid  ");
+    "696";
+    ρσ_interpolate_kwargs.call(this, checkbox, [ρσ_desugar_kwargs({bind: setconstrain})]);
+    "697";
+    scene.append_to_caption(" Constrain to Grid\n\n"["+"](border));
+    "699";
+    ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "Erase measurements", bind: clearmeasures})]);
+    "700";
+    scene.append_to_caption("  ");
+    "701";
+    ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({text: "Delete everything", bind: clearall})]);
+    "703";
+    scene.append_to_caption("\n\n"["+"](border)["+"]("Measurement type: "));
+    "704";
+    menu_options = ρσ_list_decorate([ "Vector" ]);
+    "705";
+    menu_options.append("Unit vector");
+    "706";
+    menu_options.append("Electric potential");
+    "707";
+    menu_options.append("Gauss's law");
+    "708";
+    menu_options.append("Ampere's law");
+    "709";
+    mmenu = ρσ_interpolate_kwargs.call(this, menu, [ρσ_desugar_kwargs({choices: menu_options, selected: "Vector", bind: pre_setmeasure})]);
+    "711";
+    scene.append_to_caption("\n\n"["+"](border)["+"]("Charge/Current setups: "));
+    "712";
+    menu_options2 = ρσ_list_decorate([ "Choose" ]);
+    "713";
+    var ρσ_Iter26 = arrangements;
+    ρσ_Iter26 = ((typeof ρσ_Iter26[Symbol.iterator] === "function") ? (ρσ_Iter26 instanceof Map ? ρσ_Iter26.keys() : ρσ_Iter26) : Object.keys(ρσ_Iter26));
+    for (var ρσ_Index26 of ρσ_Iter26) {
+        a = ρσ_Index26;
+        "714";
+        menu_options2.append(ρσ_getitem(a, 0));
+    }
+    "715";
+    ρσ_interpolate_kwargs.call(this, menu, [ρσ_desugar_kwargs({choices: menu_options2, selected: "Choose", bind: getsources})]);
+    "717";
+    scene.append_to_caption("\n\n"["+"](border)["+"]("Field scale factor\n"));
+    "718";
+    sl = ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({value: .4["*"](K), left: 20, max: K, length: 280, bind: set_bscale})]);
+    "739";
+    s = "\n\n  Drag charges or currents out of or into\n    the boxes at the top of the page.\n  Drag charge or current to reposition.\n  Click or drag with left button to show field.\n  Positive charge is red.\n  Negative charge is blue.\n  Current out of screen is magenta.\n  Current in is green.\n\n  Choose a measurement type, then drag:\n    Gaussian surface around long charged rods\n    Gaussian surface around line currents\n    Amperian contour around line currents\n    Line integral of electric field (ΔV)\n\n  Charge/current setups offer several\n  arrangements of charges or currents.\n";
+    "741";
+    scene.append_to_caption(s);
+    "743";
+    (await setmode(null, ELECTRIC));
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
+  
+  
 <div id="conteúdo" class="section level2">
 <h2><strong>Conteúdo</strong></h2>
 <p><em>Conteúdo do disciplina</em></p>
