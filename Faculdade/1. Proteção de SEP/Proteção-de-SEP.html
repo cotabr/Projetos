@@ -53,6 +53,484 @@ if (!!window.navigator.userAgent.match("MSIE 8")) {
  * Licensed under https://github.com/scottjehl/Respond/blob/master/LICENSE-MIT
  *  */
 
+  <div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+var drag, vpiston, spos;
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    var version, print, arange, __name__, type, ρσ_ls, win, Natoms, Raxes, Matom, Ratom, k, T, dt, t, scene, thick, wide, deep, high, gray, darkgray, cylcolor, pistoncolor, op, bottom, left, right, back, front, piston, Tlabel, Atoms, colors, poslist, plist, pavg, offset, Lmin, Lmax, x, y, z, theta, phi, px, py, pz, i, K, Tscale, thermometer, sthick, shaft, indicator, vpiston, drag, spos, newpy, dp, hitlist, j, ptot, vi, vj, vrel, a, rrel, b, c, d, deltat, mtot, pcmi, pcmj, ij, loc;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "10";
+    win = 600;
+    "13";
+    Natoms = 100;
+    "16";
+    Raxes = .005;
+    "17";
+    Matom = .004["/"](6e23);
+    "18";
+    Ratom = .03;
+    "19";
+    k = 1.4e-23;
+    "20";
+    T = 300;
+    "21";
+    dt = 1e-5;
+    "22";
+    t = 0;
+    "24";
+    scene = ρσ_interpolate_kwargs.call(this, display, [ρσ_desugar_kwargs({width: win, height: win, x: 0, y: 0})]);
+    "25";
+    scene.background = color.white;
+    "26";
+    scene.range = 1.7;
+    "27";
+    scene.center = vector(0, 1.1, 0);
+    "29";
+    thick = .1;
+    "30";
+    wide = 1;
+    "31";
+    deep = wide;
+    "32";
+    high = 2;
+    "33";
+    gray = color.gray(.7);
+    "34";
+    darkgray = color.gray(.5);
+    "35";
+    cylcolor = color.gray(.788);
+    "36";
+    pistoncolor = vector(1, .704, 0);
+    "37";
+    op = .3;
+    "38";
+    bottom = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(0, 1["-u"]()["*"](thick)["/"](2), 0), size: vector(wide, thick, deep), color: cylcolor, opacity: op})]);
+    "39";
+    left = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(1["-u"]()["*"](wide)["/"](2)["-"](1["*"](thick)["/"](2)), high["/"](2), 1["-u"]()["*"](thick)["/"](2)), size: vector(thick, high["+"](2["*"](thick)), deep["+"](thick)), color: cylcolor, opacity: op})]);
+    "40";
+    right = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(wide["/"](2)["+"](thick["/"](2)), high["/"](2), 1["-u"]()["*"](thick)["/"](2)), size: vector(thick, high["+"](2["*"](thick)), deep["+"](thick)), color: cylcolor, opacity: op})]);
+    "41";
+    back = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(0, high["/"](2), 1["-u"]()["*"](deep)["/"](2)["-"](1["*"](thick)["/"](2))), size: vector(wide, high["+"](2["*"](thick)), thick), color: cylcolor, opacity: op})]);
+    "42";
+    front = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(0, high["/"](2), deep["/"](2)["+"](thick["/"](2))), size: vector(wide["+"](2["*"](thick)), high["+"](2["*"](thick)), thick), color: cylcolor, opacity: op})]);
+    "43";
+    piston = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(0, .5["*"](high)["+"](thick["/"](2)), 0), size: vector(wide, thick, deep), color: pistoncolor})]);
+    "45";
+    ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: left.pos["-"](1["*"](vector(.6, 0, 0))), text: "Adjust\npiston\nspeed", color: color.black, opacity: 0, box: 0, line: 0})]);
+    "46";
+    ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: right.pos["+"](vector(.7, 1["-u"]()["*"](.4), 0)), text: "Temperature\ncalculated\nfrom average\nkinetic energy", color: color.black, opacity: 0, box: 0, line: 0})]);
+    "47";
+    Tlabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: right.pos["+"](vector(.7, 1["-u"]()["*"](1), 0)), text: str(T)["+"](" K"), color: color.black, opacity: 0, box: 0, line: 0})]);
+    "49";
+    ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vector(0, 2.6, 0), text: "Move the piston to observe adiabatic processes with hard-sphere gas (Q = 0).", color: color.black, opacity: 0, box: 0, line: 0})]);
+    "50";
+    ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: vector(0, 2.5, 0), text: "Atoms gain or lose kinetic energy in collisions with moving piston.", color: color.black, opacity: 0, box: 0, line: 0})]);
+    "52";
+    Atoms = ρσ_list_decorate([]);
+    "53";
+    colors = ρσ_list_decorate([ color.red, color.green, color.blue, color.yellow, color.cyan, color.magenta ]);
+    "55";
+    poslist = ρσ_list_decorate([]);
+    "57";
+    plist = ρσ_list_decorate([]);
+    pavg = sqrt(3["*"](Matom)["*"](k)["*"](T));
+    "58";
+    offset = 1.1["*"](Ratom);
+    "60";
+    for (var ρσ_Index1 = 0; ρσ_Index1["<"](Natoms); ρσ_Index1++) {
+        i = ρσ_Index1;
+        "61";
+        Lmin = 1["-u"]()["*"](wide)["/"](2)["+"](offset);
+        "62";
+        Lmax = wide["/"](2)["-"](1["*"](offset));
+        "63";
+        x = Lmin["+"](Lmax["-"](1["*"](Lmin))["*"](random()));
+        "64";
+        Lmin = bottom.pos.y["+"](thick["/"](2))["+"](offset);
+        "65";
+        Lmax = piston.pos.y["-"](1["*"](thick)["/"](2))["-"](1["*"](offset));
+        "66";
+        y = Lmin["+"](Lmax["-"](1["*"](Lmin))["*"](random()));
+        "67";
+        Lmin = 1["-u"]()["*"](deep)["/"](2)["+"](offset);
+        "68";
+        Lmax = deep["/"](2)["-"](1["*"](offset));
+        "69";
+        z = Lmin["+"](Lmax["-"](1["*"](Lmin))["*"](random()));
+        "70";
+        Atoms.append(ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vector(x, y, z), radius: Ratom, color: ρσ_getitem(colors, i["%"](6))})]));
+        "71";
+        theta = pi["*"](random());
+        "72";
+        phi = 2["*"](pi)["*"](random());
+        "73";
+        px = pavg["*"](sin(theta))["*"](cos(phi));
+        "74";
+        py = pavg["*"](sin(theta))["*"](sin(phi));
+        "75";
+        pz = pavg["*"](cos(theta));
+        "76";
+        poslist.append(vector(x, y, z));
+        "77";
+        plist.append(vector(px, py, pz));
+    }
+    "79";
+    K = 0;
+    "80";
+    for (var ρσ_Index2 = 0; ρσ_Index2["<"](Natoms); ρσ_Index2++) {
+        i = ρσ_Index2;
+        "81";
+        K=K["+"](mag2(ρσ_getitem(plist, i))["/"](2["*"](Matom)));
+    }
+    "82";
+    T = 2["/"](3)["*"](K)["/"](k)["/"](Natoms);
+    "83";
+    Tscale = high["/"](5)["/"](T);
+    "84";
+    thermometer = ρσ_interpolate_kwargs.call(this, cylinder, [ρσ_desugar_kwargs({pos: vector(bottom.pos.x["+"](wide["/"](2))["+"](2["*"](thick)), bottom.pos.y["-"](1["*"](thick)["/"](2)), deep["/"](2)), radius: thick["/"](5), axis: vector(0, T["*"](Tscale), 0), color: color.red})]);
+    "85";
+    ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: thermometer.pos, radius: 3["*"](thermometer.radius), color: thermometer.color})]);
+    "88";
+    sthick = thick["/"](2);
+    "89";
+    shaft = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: vector(bottom.pos.x["-"](1["*"](wide)["/"](2))["-"](1["*"](2)["*"](thick)), bottom.pos.y["+"](high["/"](2)), deep["/"](2)), axis: vector(0, 1, 0), size: vector(high["/"](2), sthick, sthick), color: darkgray})]);
+    "90";
+    indicator = ρσ_interpolate_kwargs.call(this, box, [ρσ_desugar_kwargs({pos: shaft.pos, axis: vector(0, 1, 0), size: vector(2["*"](sthick), 2["*"](sthick), 2["*"](sthick)), color: gray})]);
+    "91";
+    vpiston = 0;
+    "93";
+    drag = false;
+    "94";
+    spos = null;
+    "95";
+    async function mouse_event(ev) {
+        var ρσ_ls, m, newpos, my;
+        "96";
+        "97";
+        if ((ev.event === "mousedown" || typeof ev.event === "object" && ρσ_equals(ev.event, "mousedown"))) {
+            "98";
+            m = scene.mouse.pick();
+            "99";
+            if (m === indicator) {
+                "100";
+                drag = true;
+                "101";
+                spos = ρσ_interpolate_kwargs.call(scene.mouse, scene.mouse.project, [ρσ_desugar_kwargs({normal: vector(0, 0, 1), d: indicator.pos.z})]);
+                "102";
+            }
+        } else if (drag && (ev.event === "mousemove" || typeof ev.event === "object" && ρσ_equals(ev.event, "mousemove"))) {
+            "103";
+            newpos = ρσ_interpolate_kwargs.call(scene.mouse, scene.mouse.project, [ρσ_desugar_kwargs({normal: vector(0, 0, 1), d: indicator.pos.z})]);
+            "104";
+            if (newpos && (newpos.y !== spos.y && (typeof newpos.y !== "object" || ρσ_not_equals(newpos.y, spos.y)))) {
+                "105";
+                my = newpos.y;
+                "106";
+                if (my["<"](shaft.pos.y["-"](1["*"](shaft.axis.y)["/"](2)))) {
+                    "107";
+                    my = shaft.pos.y["-"](1["*"](shaft.axis.y)["/"](2));
+                    "108";
+                } else if (my[">"](shaft.pos.y["+"](shaft.axis.y["/"](2)))) {
+                    "109";
+                    my = shaft.pos.y["+"](shaft.axis.y["/"](2));
+                }
+                "110";
+                indicator.pos.y = my;
+                "111";
+                vpiston = .04["*"](my["-"](1["*"](shaft.pos.y)))["/"](dt);
+                "112";
+                spos = newpos;
+                "113";
+                if (abs(my["-"](1["*"](shaft.pos.y)))["<"](shaft.axis.y["/"](25))) {
+                    "114";
+                    vpiston = 0;
+                    "115";
+                }
+            }
+        } else if ((ev.event === "mouseup" || typeof ev.event === "object" && ρσ_equals(ev.event, "mouseup"))) {
+            "116";
+            drag = false;
+        }
+    };
+    if (!mouse_event.__argnames__) Object.defineProperties(mouse_event, {
+        __argnames__ : {value: ["ev"]},
+        __module__ : {value: null}
+    });
+
+    "118";
+    scene.bind("mousedown mousemove mouseup", mouse_event);
+    "122";
+    async function checkCollisions(apos) {
+        var ρσ_ls, hitlist, Natoms, r2, ai, aix, aiy, aiz, aj, dx, dy, dz, j, i;
+        "123no overloading";
+        "124";
+        hitlist = ρσ_list_decorate([]);
+        "125";
+        Natoms = apos.length;
+        "126";
+        r2 = Math.pow((2["*"](Ratom)), 2);
+        "127";
+        for (var ρσ_Index3 = 0; ρσ_Index3["<"](Natoms); ρσ_Index3++) {
+            i = ρσ_Index3;
+            "128";
+            ai = ρσ_getitem(apos, i);
+            "129";
+            aix = ai.x;
+            "130";
+            aiy = ai.y;
+            "131";
+            aiz = ai.z;
+            "132";
+            for (var ρσ_Index4 = i["+"](1); ρσ_Index4["<"](Natoms); ρσ_Index4++) {
+                j = ρσ_Index4;
+                "133";
+                aj = ρσ_getitem(apos, j);
+                "134";
+                dx = aix["-"](1["*"](aj.x));
+                "135";
+                dy = aiy["-"](1["*"](aj.y));
+                "136";
+                dz = aiz["-"](1["*"](aj.z));
+                "137";
+                if (dx["*"](dx)["+"](dy["*"](dy))["+"](dz["*"](dz))["<"](r2)) {
+                    hitlist.append(ρσ_list_decorate([ i, j ]));
+                }
+            }
+        }
+        "138";
+        return hitlist;
+    };
+    if (!checkCollisions.__argnames__) Object.defineProperties(checkCollisions, {
+        __argnames__ : {value: ["apos"]},
+        __module__ : {value: null}
+    });
+
+    "140";
+    while (true) {
+        "141";
+        (await rate(50));
+        "144";
+        newpy = piston.pos.y["+"](vpiston["*"](dt));
+        "145";
+        py = piston.pos.y["-"](1["*"](thick)["/"](2))["-"](1["*"](offset));
+        "146";
+        if (bottom.pos.y["+"](.2["*"](high))["<"](newpy) && newpy["<"](bottom.pos.y["+"](.95["*"](high)))) {
+            "147";
+            piston.pos.y = newpy;
+            "148";
+        } else {
+            "149";
+            py = 1e4;
+            "150";
+            indicator.pos = shaft.pos;
+            "151";
+            vpiston = 0;
+        }
+        "152";
+        dp = 2["*"](Matom)["*"](vpiston);
+        "153";
+        for (var ρσ_Index5 = 0; ρσ_Index5["<"](Natoms); ρσ_Index5++) {
+            i = ρσ_Index5;
+            "154";
+            ρσ_setitem(poslist, i, ρσ_getitem(poslist, i)["+"](ρσ_getitem(plist, i)["/"](Matom)["*"](dt)));
+            "155";
+            if (ρσ_getitem(poslist, i).y[">="](py)) {
+                "156";
+                ρσ_getitem(poslist, i).y = py;
+                "157";
+                ρσ_getitem(plist, i).y = 1["-u"]()["*"](ρσ_getitem(plist, i).y)["+"](dp);
+            }
+        }
+        "160";
+        hitlist = (await checkCollisions(poslist));
+        "163";
+        var ρσ_Iter6 = hitlist;
+        ρσ_Iter6 = ((typeof ρσ_Iter6[Symbol.iterator] === "function") ? (ρσ_Iter6 instanceof Map ? ρσ_Iter6.keys() : ρσ_Iter6) : Object.keys(ρσ_Iter6));
+        for (var ρσ_Index6 of ρσ_Iter6) {
+            ij = ρσ_Index6;
+            "164";
+            i = ρσ_getitem(ij, 0);
+            "165";
+            j = ρσ_getitem(ij, 1);
+            "166";
+            ptot = ρσ_getitem(plist, i)["+"](ρσ_getitem(plist, j));
+            "167";
+            vi = ρσ_getitem(plist, i)["/"](Matom);
+            "168";
+            vj = ρσ_getitem(plist, j)["/"](Matom);
+            "169";
+            vrel = vj["-"](1["*"](vi));
+            "170";
+            a = Math.pow(mag(vrel), 2);
+            "171";
+            if ((a === 0 || typeof a === "object" && ρσ_equals(a, 0))) {
+                continue;
+            }
+            "172";
+            rrel = ρσ_getitem(poslist, i)["-"](1["*"](ρσ_getitem(poslist, j)));
+            "173";
+            b = 2["*"](dot(rrel, vrel));
+            "174";
+            c = Math.pow(mag(rrel), 2)["-"](1["*"](Math.pow((2["*"](Ratom)), 2)));
+            "175";
+            d = Math.pow(b, 2)["-"](1["*"](4)["*"](a)["*"](c));
+            "176";
+            if (d["<"](0)) {
+                continue;
+            }
+            "177";
+            deltat = 1["-u"]()["*"](b)["+"](sqrt(d))["/"](2["*"](a));
+            "178";
+            ρσ_setitem(poslist, i, ρσ_getitem(poslist, i)["-"](1["*"](vi)["*"](deltat)));
+            "179";
+            ρσ_setitem(poslist, j, ρσ_getitem(poslist, j)["-"](1["*"](vj)["*"](deltat)));
+            "180";
+            mtot = 2["*"](Matom);
+            "181";
+            pcmi = ρσ_getitem(plist, i)["-"](1["*"](ptot)["*"](Matom)["/"](mtot));
+            "182";
+            pcmj = ρσ_getitem(plist, j)["-"](1["*"](ptot)["*"](Matom)["/"](mtot));
+            "183";
+            rrel = norm(1["-u"]()["*"](rrel));
+            "184";
+            pcmi = pcmi["-"](1["*"](2)["*"](dot(pcmi, rrel))["*"](rrel));
+            "185";
+            pcmj = pcmj["-"](1["*"](2)["*"](dot(pcmj, rrel))["*"](rrel));
+            "186";
+            ρσ_setitem(plist, i, pcmi["+"](ptot["*"](Matom)["/"](mtot)));
+            "187";
+            ρσ_setitem(plist, j, pcmj["+"](ptot["*"](Matom)["/"](mtot)));
+            "188";
+            ρσ_setitem(poslist, i, ρσ_getitem(poslist, i)["+"](ρσ_getitem(plist, i)["/"](Matom)["*"](deltat)));
+            "189";
+            ρσ_setitem(poslist, j, ρσ_getitem(poslist, j)["+"](ρσ_getitem(plist, j)["/"](Matom)["*"](deltat)));
+        }
+        "191";
+        for (var ρσ_Index7 = 0; ρσ_Index7["<"](Natoms); ρσ_Index7++) {
+            i = ρσ_Index7;
+            "192";
+            loc = ρσ_getitem(poslist, i);
+            "193";
+            if (abs(loc.x)[">"](wide["/"](2)["-"](1["*"](offset)))) {
+                "194";
+                if (loc.x["<"](0)) {
+                    ρσ_getitem(plist, i).x = abs(ρσ_getitem(plist, i).x);
+                } else {
+                    ρσ_getitem(plist, i).x = 1["-u"]()["*"](abs(ρσ_getitem(plist, i).x));
+                }
+                "197";
+            }
+            if (loc.y[">"](piston.pos.y["-"](1["*"](thick)["/"](2))["-"](1["*"](offset))) || loc.y["<"](offset)) {
+                "198";
+                if (loc.y["<"](offset)) {
+                    ρσ_getitem(plist, i).y = abs(ρσ_getitem(plist, i).y);
+                } else {
+                    ρσ_getitem(plist, i).y = 1["-u"]()["*"](abs(ρσ_getitem(plist, i).y));
+                }
+                "201";
+            }
+            if (abs(loc.z)[">"](deep["/"](2)["-"](1["*"](offset)))) {
+                "202";
+                if (loc.z["<"](0)) {
+                    ρσ_getitem(plist, i).z = abs(ρσ_getitem(plist, i).z);
+                } else {
+                    ρσ_getitem(plist, i).z = 1["-u"]()["*"](abs(ρσ_getitem(plist, i).z));
+                }
+            }
+        }
+        "206";
+        for (var ρσ_Index8 = 0; ρσ_Index8["<"](Natoms); ρσ_Index8++) {
+            i = ρσ_Index8;
+            "207";
+            ρσ_getitem(Atoms, i).pos = ρσ_getitem(poslist, i);
+        }
+        "209";
+        K = 0;
+        "210";
+        for (var ρσ_Index9 = 0; ρσ_Index9["<"](Natoms); ρσ_Index9++) {
+            i = ρσ_Index9;
+            "211";
+            K=K["+"](mag2(ρσ_getitem(plist, i))["/"](2["*"](Matom)));
+        }
+        "212";
+        T = 2["/"](3)["*"](K)["/"](k)["/"](Natoms);
+        "213";
+        thermometer.axis.y = T["*"](Tscale);
+        "214";
+        Tlabel.text = str(int(round(T)))["+"](" K");
+        "216";
+        t = t["+"](dt);
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>
+  
 // Only run this code in IE 8
 if (!!window.navigator.userAgent.match("MSIE 8")) {
 !function(a){"use strict";a.matchMedia=a.matchMedia||function(a){var b,c=a.documentElement,d=c.firstElementChild||c.firstChild,e=a.createElement("body"),f=a.createElement("div");return f.id="mq-test-1",f.style.cssText="position:absolute;top:-100em",e.style.background="none",e.appendChild(f),function(a){return f.innerHTML='&shy;<style media="'+a+'"> #mq-test-1 { width: 42px; }</style>',c.insertBefore(e,d),b=42===f.offsetWidth,c.removeChild(e),{matches:b,media:a}}}(a.document)}(this),function(a){"use strict";function b(){u(!0)}var c={};a.respond=c,c.update=function(){};var d=[],e=function(){var b=!1;try{b=new a.XMLHttpRequest}catch(c){b=new a.ActiveXObject("Microsoft.XMLHTTP")}return function(){return b}}(),f=function(a,b){var c=e();c&&(c.open("GET",a,!0),c.onreadystatechange=function(){4!==c.readyState||200!==c.status&&304!==c.status||b(c.responseText)},4!==c.readyState&&c.send(null))};if(c.ajax=f,c.queue=d,c.regex={media:/@media[^\{]+\{([^\{\}]*\{[^\}\{]*\})+/gi,keyframes:/@(?:\-(?:o|moz|webkit)\-)?keyframes[^\{]+\{(?:[^\{\}]*\{[^\}\{]*\})+[^\}]*\}/gi,urls:/(url\()['"]?([^\/\)'"][^:\)'"]+)['"]?(\))/g,findStyles:/@media *([^\{]+)\{([\S\s]+?)$/,only:/(only\s+)?([a-zA-Z]+)\s?/,minw:/\([\s]*min\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/,maxw:/\([\s]*max\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/},c.mediaQueriesSupported=a.matchMedia&&null!==a.matchMedia("only all")&&a.matchMedia("only all").matches,!c.mediaQueriesSupported){var g,h,i,j=a.document,k=j.documentElement,l=[],m=[],n=[],o={},p=30,q=j.getElementsByTagName("head")[0]||k,r=j.getElementsByTagName("base")[0],s=q.getElementsByTagName("link"),t=function(){var a,b=j.createElement("div"),c=j.body,d=k.style.fontSize,e=c&&c.style.fontSize,f=!1;return b.style.cssText="position:absolute;font-size:1em;width:1em",c||(c=f=j.createElement("body"),c.style.background="none"),k.style.fontSize="100%",c.style.fontSize="100%",c.appendChild(b),f&&k.insertBefore(c,k.firstChild),a=b.offsetWidth,f?k.removeChild(c):c.removeChild(b),k.style.fontSize=d,e&&(c.style.fontSize=e),a=i=parseFloat(a)},u=function(b){var c="clientWidth",d=k[c],e="CSS1Compat"===j.compatMode&&d||j.body[c]||d,f={},o=s[s.length-1],r=(new Date).getTime();if(b&&g&&p>r-g)return a.clearTimeout(h),h=a.setTimeout(u,p),void 0;g=r;for(var v in l)if(l.hasOwnProperty(v)){var w=l[v],x=w.minw,y=w.maxw,z=null===x,A=null===y,B="em";x&&(x=parseFloat(x)*(x.indexOf(B)>-1?i||t():1)),y&&(y=parseFloat(y)*(y.indexOf(B)>-1?i||t():1)),w.hasquery&&(z&&A||!(z||e>=x)||!(A||y>=e))||(f[w.media]||(f[w.media]=[]),f[w.media].push(m[w.rules]))}for(var C in n)n.hasOwnProperty(C)&&n[C]&&n[C].parentNode===q&&q.removeChild(n[C]);n.length=0;for(var D in f)if(f.hasOwnProperty(D)){var E=j.createElement("style"),F=f[D].join("\n");E.type="text/css",E.media=D,q.insertBefore(E,o.nextSibling),E.styleSheet?E.styleSheet.cssText=F:E.appendChild(j.createTextNode(F)),n.push(E)}},v=function(a,b,d){var e=a.replace(c.regex.keyframes,"").match(c.regex.media),f=e&&e.length||0;b=b.substring(0,b.lastIndexOf("/"));var g=function(a){return a.replace(c.regex.urls,"$1"+b+"$2$3")},h=!f&&d;b.length&&(b+="/"),h&&(f=1);for(var i=0;f>i;i++){var j,k,n,o;h?(j=d,m.push(g(a))):(j=e[i].match(c.regex.findStyles)&&RegExp.$1,m.push(RegExp.$2&&g(RegExp.$2))),n=j.split(","),o=n.length;for(var p=0;o>p;p++)k=n[p],l.push({media:k.split("(")[0].match(c.regex.only)&&RegExp.$2||"all",rules:m.length-1,hasquery:k.indexOf("(")>-1,minw:k.match(c.regex.minw)&&parseFloat(RegExp.$1)+(RegExp.$2||""),maxw:k.match(c.regex.maxw)&&parseFloat(RegExp.$1)+(RegExp.$2||"")})}u()},w=function(){if(d.length){var b=d.shift();f(b.href,function(c){v(c,b.href,b.media),o[b.href]=!0,a.setTimeout(function(){w()},0)})}},x=function(){for(var b=0;b<s.length;b++){var c=s[b],e=c.href,f=c.media,g=c.rel&&"stylesheet"===c.rel.toLowerCase();e&&g&&!o[e]&&(c.styleSheet&&c.styleSheet.rawCssText?(v(c.styleSheet.rawCssText,e,f),o[e]=!0):(!/^([a-zA-Z:]*\/\/)/.test(e)&&!r||e.replace(RegExp.$1,"").split("/")[0]===a.location.host)&&("//"===e.substring(0,2)&&(e=a.location.protocol+e),d.push({href:e,media:f})))}w()};x(),c.update=x,c.getEmValue=t,a.addEventListener?a.addEventListener("resize",b,!1):a.attachEvent&&a.attachEvent("onresize",b)}}(this);
