@@ -18,7 +18,7 @@
 
 ## [Laboratório de Comunicações](Faculdade/6. Laboratório de Comunicações/Laboratório-de-Comunicações.html)
 
-## [Instalações Elétricas](Faculdade/7. Instalações Elétricas/Instalações-Elétricas.html)
+## [Teste](Faculdade/Teste.html)
 
 ## [Sistemas de Energia](Faculdade/8. Sistemas de Energia/Sistemas-de-Energia.html)
 
