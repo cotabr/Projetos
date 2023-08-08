@@ -1,0 +1,52 @@
+```{r}
+library(reticulate)
+library(exams)
+
+```
+
+```{python include=FALSE}
+from sympy import *
+from numpy.random import randint
+
+n = randint(0,1)
+a = (-1)**n*randint(1,9)
+b = randint(1,9)
+c = randint(1,9)
+u = Function('u')
+x = c*exp(-a*t/b)*u(t)
+t = symbols('t')
+s = symbols('s')
+
+X0 = c*b/(b*s+a)
+X1 = c/(s+a)
+X2 = c/(s+b)
+X3 = c/(b*s+a)
+X4 = c/(s-a)
+X = [X0, X1, X2, X3, X4]
+
+X_str = ['$$' + latex(x) + '$$' for x in X]
+x_str = latex(x)
+```
+
+```{r}
+A = answerlist(py$X_str, markup = "markdown")
+```
+
+Question
+========
+Qual das alternativas abaixo representa a transformada de Laplace do sinal 
+
+$$x(t) = \displaystyle {`r py$x_str`}\text{\ ?}$$
+
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(py$X_str, markup = "markdown")
+```
+
+
+Meta-information
+================
+exname: lap_exp1
+extype: schoice
+exsolution: 10000

@@ -1,0 +1,31 @@
+```{r}
+library(reticulate)
+library(exams)
+
+a <- sample(2:9,1)
+```
+
+
+Question
+========
+Qual das alternativas abaixo representa a transformada de Laplace do sinal $e^{-{`r a`}t}\,u(t)$?
+
+Answerlist
+----------
+* $$\displaystyle\frac{1}{s+{`r a`}}$$
+
+* $$\displaystyle\frac{1}{s-{`r a`}}$$
+
+* $$\displaystyle\frac{{`r a`}}{s+{`r a`}}$$
+
+* $$\displaystyle\frac{{`r a`}}{s+1}$$
+
+* $$\displaystyle\frac{{`r a`}}{s-{`r a`}}$$
+
+
+Meta-information
+================
+exname: lap_exp
+extype: schoice
+exsolution: 10000
+exshuffle: 5

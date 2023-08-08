@@ -1,0 +1,70 @@
+```{r}
+library(reticulate)
+library(exams)
+
+dlist <- function(lista, rem){
+  return (lista[lista %in% rem == FALSE])
+}
+
+dig = -9:9
+a <- 0
+b <- 0
+while (a==0 & b==0) {
+  a = sample(dig,1)
+  b = sample(dig,1)
+}
+
+c = sample(dlist(dig,0),1)
+w = sample(dlist(dig,0),1)
+
+```
+
+```{python include=FALSE}
+from sympy import *
+
+a, b, c, w = symbols('a b c \omega', real=True, Positive=True)
+u = Function('u')
+t = symbols('t')
+s = symbols('s')
+y = exp(-c*t)*(a*cos(w*t)+b*sin(w*t))
+Y = laplace_transform(y,t,s)[0]
+reps = [(a,r.a), (b,r.b), (c,r.c), (w,r.w)]
+Y1 = Y.subs(reps)
+Y2 = Y1.expand(numer=True, denom=True)
+
+X = [Y1, Y2]
+X += [  w/(s+w),
+        a/(s**2+w**2),
+        a*w/(s+a),
+        1/(s**2+a*s+w),
+        w/(s**2+w**2),
+      ]
+
+X_str = ['$$' + latex(x.subs(reps).simplify()) + '$$' for x in X]
+y_str = latex(y.subs(reps).simplify())
+```
+
+```{r}
+A = answerlist(py$X_str, markup = "markdown")
+```
+
+Question
+========
+
+Seja o sinal: 
+
+$$y(t) = \displaystyle {`r py$y_str`}$$
+
+A transformada $Y(s) = \mathcal{L}\{y(t)\}$ é:
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(py$X_str, markup = "markdown")
+```
+
+
+Meta-information
+================
+exname: lap_expcos
+extype: schoice
+exsolution: 1100000
+exshuffle: 5

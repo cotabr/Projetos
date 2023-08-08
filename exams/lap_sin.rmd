@@ -1,0 +1,60 @@
+```{r}
+library(reticulate)
+library(exams)
+
+dig = 1:9
+a = sample(dig, 1)
+b = sample(dig[dig!=a], 1)
+c = sample(dig,1)
+
+```
+
+```{python include=FALSE}
+from sympy import *
+
+a = r.a
+b = r.b
+c = r.c
+u = Function('u')
+t = symbols('t')
+s = symbols('s')
+w = Rational(a,b)
+y = a*cos(w*t)*u(t)
+Y = a*s/(s**2+w**2)
+
+X = [Y]
+X += [  w/(s+w),
+        w/(s**2+w**2),
+        a*w/s**2,
+        1/(w*s+1),
+        w**2/(s**2+w**2),
+      ]
+
+X_str = ['$$' + latex(x.simplify()) + '$$' for x in X]
+y_str = latex(y)
+```
+
+```{r}
+A = answerlist(py$X_str, markup = "markdown")
+```
+
+Question
+========
+
+Seja o sinal: 
+
+$$y(t) = \displaystyle {`r py$y_str`}$$
+
+A transformada $Y(s) = \mathcal{L}\{y(t)\}$ é:
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(py$X_str, markup = "markdown")
+```
+
+
+Meta-information
+================
+exname: lap_sin
+extype: schoice
+exsolution: 100000
+exshuffle: 5
