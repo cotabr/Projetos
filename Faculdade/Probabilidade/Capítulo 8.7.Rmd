@@ -1,0 +1,124 @@
+---
+title: "Capítulo 8.7 - Correlação de Processos Aleatórios"
+author: 
+- Denilson Silva (Discente)
+- Dr. Rafael Suzuki Bayma (Docente)
+date: "`r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  rmdformats::readthedown
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+```
+
+<p ALIGN=justify>Enquanto processos aleatórios são, por definição, imprevisíveis, geralmente observamos que as amostras do processo em tempos diferentes podem ser correlacionadas. Por exemplo, se $X(t_1)$ for grande, então também podemos esperar que $X(t_1 + \tau)$ seja grande, se $\tau$ for pequeno. Para quantificar esta relação, considere a covariância de duas variáveis aleatórias, definida na Seção 8.2, aplicada a amostras do processo aleatório $X(t)$ nos tempos $t_1$ e $t_2$. Ou seja, a covariância de duas variáveis aleatórias $X(t1)$ e $X(t_2)$ é dada por:</p>
+
+$$
+\textrm{Cov}(X(t_1), X(t_2))=E[X(t_1), X(t_2)]-\mu_{X(t_1)}\mu_{X(t_2)}\tag{8.64}
+$$
+
+<p ALIGN=justify>Definimos o primeiro termo do lado direito da Eq. (8.64) como a autocorrelação do processo aleatório e utilizamos a notação genérica:</p>
+
+$$
+R_{X(t,s)}=E[X(t)X^*(s)]\tag{8.65}
+$$
+
+<p ALIGN=justify>Na qual utilizamos o asterisco para representar o conjugado complexo para quando $X(t)$ for de valor complexo. Se $X(t)$ é estacionário de segunda ordem ou mais, então a Equação 8.64 pode ser escrita por:</p>
+
+\begin{align*}
+R_{X(t,s)}&=E[X(t)X^*(s)]\\
+&=R_X(t-s)\tag{8.66}
+\end{align*}
+
+<p ALIGN=justify>A estacionariedade de segunda ordem também implica que a média do processo aleatório é constante. Se a média é zero, então as funções de autocorrelação e covariância do processo aleatório são equivalentes. A seguir será mostrada a importância da função de autocorrelação como descritor de processos aleatórios. Para várias aplicações, não precisamos que um processo aleatório tenha todas as propriedades necessárias para ser estacionário de segunda ordem. Em particular geralmente precisamos apenas que:</p>
+
+1. A média do processo aleatório é uma constante independente do tempo: $E[X(t)] = \mu_X$ para todo t.
+
+2. A autocorrelação de um processo aleatório depende apenas da diferença de tempo: $E[X(t) X^*(t – \tau)] = R_X(\tau)$, para todo t e $\tau$.
+ 
+<p ALIGN=justify>Se um processo aleatório possui estas duas propriedades, então podemos dizer que ele é estacionário de sentido amplo ou fracamente estacionário. Note que a estacionariedade de sentido amplo não implica em estacionariedade de segunda ordem. Nem estacionariedade de segunda ordem implica em estacionariedade de sentido amplo, pois os momentos de primeira e segunda ordem podem não existir. No restante do livro, iremos assumir que todos os processos de interesse são estacionários em sentido amplo.</p>
+
+# Propriedades da função de autocorrelação
+<p ALIGN=justify>A função de autocorrelação de um processo aleatório estacionário em sentido amplo possui as seguintes propriedades para um processo de valor real:</p>
+
+>**PROPRIEDADE 1 – POTÊNCIA DE UM PROCESSO ESTACIONÁRIO EM SENTIDO AMPLO** O segundo momento ou valor médio quadrático de um processo aleatório de valor real é dado por:
+
+\begin{align*}
+R_X(0)&=E[X(t)X(t)]\\
+&=E[X^2(t)]\tag{8.67}
+\end{align*}
+
+<p ALIGN=justify>O valor médio quadrático é, portanto, equivalente à potência média do processo.</p>
+
+>**PROPRIEDADE 2 – SIMETRIA** A correlação de um processo aleatório estacionário em sentido amplo de valor real possui simetria par. Para mostrar isto, considere:
+
+\begin{align*}
+R_X(-\tau)&=E[X(t)X(t+\tau)]\\
+&=E[X(t+\tau)X(t)]\\
+&=R_X(\tau)\tag{8.68    }
+\end{align*}
+
+>**PROPRIEDADE 3 – VALOR MÁXIMO** A função de autocorrelação de um processo aleatório estacionário em sentido amplo é máxima na origem. Para mostrar esta propriedade para um processo de valor real, forme quantidade não negativa:
+
+\begin{align*}
+0&\leq E[(X(t)\pm X(t-\tau))^2]\\
+&\leq E[X^2(t)]+E[X^2(t-\tau)]\pm 2E[X(t)X(t-\tau)]\\
+&\leq 2R_X(0)\pm 2R_X(\tau)\tag{8.69}
+\end{align*}
+
+<p ALIGN=justify>Reorganizando a última relação, temos $R_X(0) \geq |R_X(\tau)|$.</p>
+
+<p ALIGN=justify>O significado físico da função de autocorrelação $R_X (\tau)$ é que ela fornece uma maneira de descrever a interdependência de duas variáveis aleatórias obtidas pela observação do processo aleatório $X(t)$ $\tau$ segundos separados uma da outra. É, portanto, aparente que quão mais rapidamente o processo aleatório $X(t)$ varia como o tempo, mais rapidamente a função de autocorrelação $R_X(\tau)$ irá diminuir de seu máximo $R_X(0)$ quando $\tau$ aumenta. Este decaimento pode ser caracterizado pelo tempo de decorrelação $\tau_0$, especificamente, para $\tau > \tau_0$, a amplitude da correlação $R_X(\tau)$ permanece abaixo de um valor preestabelecido. Podemos, portanto, definir o tempo de decorrelação $\tau_0$ de um 
+processo estacionário $X(t)$ de média zero como o tempo para que a amplitude da função de autocorrelação $R_X(\tau)$ diminua, digamos, para 1% de seu valor máximo em $R_X(0)$.</p>
+
+# Ergodicidade
+
+<p ALIGN=justify>Para determinar as propriedades estatísticas de um processo aleatório, geralmente precisamos calcular esperanças. A esperança de um processo aleatório em um ponto particular no tempo requer realizações independentes separadas do processo aleatório. Por exemplo, para um processo aleatório $X(t)$ com $N$ realizações equiprováveis $\{x_j (t): j = 1, 2, .., N\}$, o valor esperado e o segundo momento do processo aleatório no tempo $t = t_k$ são, respectivamente, dados pelas médias da família:</p>
+
+$$
+E[X(t_k)]=\frac{1}{N}\sum^N_{j=1}x_j(t_k)\tag{8.70}
+$$
+e
+
+$$
+E[X^2(t_k)]=\frac{1}{N}\sum^N_{j=1}x_j^2(t_k)\tag{8.71}
+$$
+
+<p ALIGN=justify>Se o processo é estacionário em sentido amplo, então o valor médio e o segundo momento calculados por estas duas equações não dependem do tempo $t_k$.</p>
+
+<p ALIGN=justify>Em problemas práticos envolvendo processos aleatórios, o que geralmente estará disponível para o usuário não é o processo aleatório, mas uma de suas funções de amostra $x(t)$. Em tais casos, os parâmetros mais facilmente medidos são as médias temporais. Por 
+exemplo, a média temporal de uma função amostra contínua obtida de um processo de valor real é dada por:</p>
+
+$$
+\varepsilon [x]=\lim_{T\rightarrow \infty} \frac{1}{2T}\int^T_{-T}x(t)dt\tag{8.72}
+$$
+
+<p ALIGN=justify>E a autocorrelação no tempo da função amostra é dada por:</p>
+
+$$
+R_x(\tau)=\lim_{T\rightarrow \infty} \frac{1}{2T}\int^T_{-T}x(t)x(t-\tau)dt\tag{8.73}
+$$
+ 
+<p ALIGN=justify>Então a questão é: Quando as médias temporais de uma função amostra são iguais às médias do espaço amostral do processo aleatório correspondente? Intuitivamente, se as estatísticas do processo aleatório X(t) não mudarem com o tempo, então podemos esperar que as médias temporais e as médias do espaço amostral sejam equivalentes.</p>
+
+<p ALIGN=justify>Dependendo das propriedades estacionárias do processo aleatório, várias médias temporais das funções de amostra podem ser utilizadas para aproximar as médias ou esperanças do espaço amostral correspondente. Processos aleatórios para os quais esta equivalência é válida são ditos serem ergódicos. Na maioria das aplicações físicas, os processos estacionários em sentido amplo são ergódicos, e, neste caso, as médias temporais e esperanças podem ser utilizadas uma no lugar da outra.</p>
+
+<p ALIGN=justify>O leitor alerta irá notar que, tal como a estacionariedade, existem vários graus de ergodicidade. As equivalências das Equações (8.70) e (8.72) por um lado e as Equações (8.66) e (8.73) correspondentes por outro lado são análogas à forma de ergodicidade de primeira e 
+segunda ordem. Além disso, se assumirmos que o processo aleatório de valor real é ergódico, então podemos expressar a função de autocorrelação por:</p>
+
+\begin{align*}
+R_X(\tau)&=E[X(t)X(t-\tau)]\\
+&=\lim_{T\rightarrow \infty} \frac{1}{2T}\int^T_{-T}x(t)x(t-\tau)dt\tag{8.74}
+\end{align*}
+
+<p ALIGN=justify>Na qual x(t) é uma função amostra do processo aleatório $X(t)$. Esta definição de autocorrelação é idêntica à definição de correlação para sinais de potência determinísticos como descrito no Capítulo 2. Como conseqüência, a autocorrelação de um processo aleatório ergódico possui as mesmas propriedades da autocorrelação de sinais determinísticos.</p>
+ 
+$$
+\hat{R}_X(\tau_0)=\frac{1}{n}\sum^N_{n=1}x(t_n)x(t_n-\tau_0)\tag{8.75}
+$$
+ 
+<p ALIGN=justify>O conceito de ergodicidade também leva naturalmente à idéia de estimadores para a função de autocorrelação. Em particular, se $x(t)$ é uma função amostra de um processo ergódico estacionário em sentido amplo $X(t)$, então uma estimativa da autocorrelação de um processo de valor real para o atraso $\tau=\tau_0$ é na qual $\{t_n\}$ é um conjunto conveniente de tempos de amostragem, uniformemente espaçados ou não. Similar aos estimadores de média e variância de uma variável aleatória, esta estimativa de autocorrelação é motivada pela definição de frequência relativa da probabilidade.</p>
+
+# [Volta a Página Inicial 🏠](Página-Inicial.html)

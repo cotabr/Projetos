@@ -1,0 +1,323 @@
+---
+title: "Capítulo 8.2 - Esperança"
+author: 
+- Denilson Silva (Discente)
+- Dr. Rafael Suzuki Bayma (Docente)
+date: "`r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  rmdformats::readthedown
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+```
+
+<p ALIGN=justify>Ao explorarmos a função de distribuição de probabilidade, frequentemente nos deparamos com detalhes excessivos que podem obscurecer a compreensão da variável aleatória em questão. Em alguns casos, a utilização de medidas estatísticas mais simples, como a média e a variância, pode oferecer uma descrição mais concisa e compreensível da variável aleatória.</p>
+
+<p ALIGN=justify>Na estatística, a esperança, simbolizada pelo operador $E[x^{n}]$ ou o momento de ordem $n$ de uma variável, desempenha um papel crucial na síntese de informações sobre a distribuição. O operador $E$ representa o valor esperado ou a esperança, e sua aplicação permite resumir características importantes da variável aleatória.</p>
+
+<p ALIGN=justify>A esperança é, essencialmente, o valor médio esperado de uma variável. Considerando uma variável aleatória contínua $X$ com função densidade $f$, a esperança matemática ou média de $X$, denotada por $E(X)$, é definida como:</p>
+
+$$
+E(X) = \int_{-\infty}^{\infty} x \cdot f(x) \,dx \tag{8.33}
+$$
+
+<p ALIGN=justify>Esta expressão representa a integral do produto do valor da variável $x$ e sua função densidade $f(x)$ em relação a todos os possíveis valores de $x$. Em outras palavras, a esperança é uma medida que resume a tendência central da distribuição de probabilidade de $X$.</p>
+
+<p ALIGN=justify>Assim, ao empregar o conceito de esperança, podemos simplificar a descrição de variáveis aleatórias e concentrar-nos em aspectos essenciais de sua distribuição, proporcionando uma compreensão mais clara e eficaz em contextos estatísticos e probabilísticos.</p>
+
+# Média
+
+<p ALIGN=justify>Como a média é uma medida sensível aos valores da amostra, é mais adequada para situações em que os dados são distribuídos mais ou menos de forma uniforme, ou seja, valores sem grandes discrepâncias. Para uma variável aleatória discreta X, a média, $\mu_x$, é a soma ponderada de todas as possíveis saídas. Sendo assim temos que:</p>
+
+\begin{align*}
+\mu_X &= E[x]
+\mu_X &= \sum_x xP[X=x]  \tag{8.32}
+\end{align*}
+
+<p ALIGN=justify>na qual o somatório ocorre para todas as possíveis saídas da variável aleatória X. Para uma variável aleatória contínua com função de densidade fX(x), a definição análoga de valor esperado é </p>
+
+$$
+E[X]=\int_{-\infty}^{+\infty} xf(x) \, dx \tag{8.33}
+$$
+
+
+<p ALIGN=justify>Geralmente o valor médio de uma variável aleatória é estimado de $N$ observações da variável aleatória $\{x_1, x_2, .., x_N\}$, usando o estimador.</p>
+
+$$\hat{\mu}_X =\frac{1}{N}\sum_{(n=1)}^{N}x_n \tag{8.34}$$
+
+<p ALIGN=justify>Ou seja, estimamos a média da distribuição calculando o valor médio em um determinado número de observações da variável aleatória. Este estimador é baseado na definição de freqüência relativa de probabilidade. Por exemplo, se as possíveis saídas da variável aleatória Z são 1, 2, 3, ..., M, então o estimador se torna,</p>
+
+$$\hat{\mu} = \frac{ 1 \cdot n_1 + 2 \cdot n_2 + \cdot \cdot \cdot+ M \cdot n_m}{N}$$
+
+<p ALIGN=justify>no qual $ni$ é o número de vezes que a observação $Z = i$ ocorre. Podemos reescrever esta equação como:</p>
+
+$$\hat{\mu} = \sum_{i=1}^{M}i\frac{n_i}{N}$$  
+$$\approx \sum_{i=1}^{M}iP[Z=i]$$
+
+<p ALIGN=justify>Ou seja, esperamos que as saídas mais prováveis ocorram mais frequentemente quando um número de observações é feito.cRetornando ao caso geral, se consideramos X como variável aleatória representando as observações da tensão de um sinal aleatório, então o valor médio de X representa a tensão média ou nível CC do sinal.</p>
+
+<p ALIGN=justify>Exemplo 1: podemos observar na Figura 1 os valores de vendas de carros em uma consecionaria de carros no decorrer do ano. A média anual de vendas de carros pode-ser obtida facilmente a partir da Equação 8.34.</p>
+
+```{python, fig.align='center', fig.width=6, fig.height=5}
+import matplotlib.pyplot as plt
+import numpy as np
+def plot_vendas_carros(ano, vendas_por_mes):
+    meses = list(range(1, 13))  # Lista de meses de janeiro a dezembro
+    plt.plot(meses, vendas_por_mes, marker='o', linestyle='-', color='b')
+    plt.xlabel('Mês')
+    plt.ylabel('Vendas de Carros')
+    plt.title(f'Figura 1:Vendas de Carros na Concessionária - {ano}')
+    plt.xticks(meses, ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'])
+    plt.grid(True)
+    plt.show()
+
+# Exemplo de uso da função
+ano = 2023
+vendas_por_mes = [50, 60, 45, 70, 55, 70, 75, 65, 72, 70, 75, 80]
+plot_vendas_carros(ano, vendas_por_mes)
+
+```
+
+<p ALIGN=justify>A média pode ser calculada de inumeras formas no python, as maneiras mais convencionais são através da propria definição da mepdia, que é definida pelo somatório dos termos divididos pela quantidade de elementos.</p>
+
+```{python}
+import numpy as np
+media_aritimetica = round(sum(vendas_por_mes)/len(vendas_por_mes),3)
+media_numpy = round(np.mean(vendas_por_mes),3)
+
+print("Vendas por mês:", vendas_por_mes)
+print("Média das vendas anuais:", media_aritimetica)
+print("Média das vendas anuais:", media_numpy)
+```
+
+<p ALIGN=justify>Um problema bastante encontrando nessa métrica é quando no conjunto de daods existem valores com valores discrepantes com relação aos demais valores.</p>
+
+```{python, fig.align='center', fig.width=6, fig.height=5}
+import matplotlib.pyplot as plt
+
+def plot_indice_precipitacao_3_anos(indice_precipitacao):
+    anos = list(range(1, 4))  # Lista de anos de 1 a 3
+    meses = list(range(1, 13))  # Lista de meses de janeiro a dezembro
+
+    plt.figure(figsize=(10, 6))
+    for ano, indice_anual in zip(anos, indice_precipitacao):
+        plt.plot(meses, indice_anual, marker='o', linestyle='-', label=f'Ano {ano}')
+
+    plt.xlabel('Mês')
+    plt.ylabel('Índice de Precipitação')
+    plt.title('Índices de Precipitação de Chuvas ao Longo de 3 Anos')
+    plt.xticks(meses, ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'])
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+# Exemplo de uso da função
+# Os dados são fictícios apenas para fins ilustrativos
+indice_precipitacao_3_anos = [
+    [100, 80, 125, 90, 88, 70, 50, 60, 95, 120, 130, 110],  # Ano 1
+    [90, 85, 130, 88, 90, 90, 55, 75, 100, 115, 120, 100],  # Ano 2
+    [110, 100, 140, 90, 95, 80, 60, 65, 105, 125, 135, 105],  # Ano 3
+    # Adicione os dados dos demais anos aqui...
+]
+ano1 =[100, 80, 125, 90, 88, 70, 50, 60, 95, 120, 130, 110],  # Ano 1
+ano2 = [90, 85, 130, 88, 90, 90, 55, 75, 100, 115, 120, 100],  # Ano 2
+ano3 =[110, 100, 140, 90, 95, 80, 60, 65, 105, 125, 135, 105],  # Ano 3
+plot_indice_precipitacao_3_anos(indice_precipitacao_3_anos)
+```
+
+```{python}
+print("Media de pricipitação no ano 1:", round(np.mean(ano1),3))
+print("Media de pricipitação no ano 2:", round(np.mean(ano2),3))
+print("Media de pricipitação no ano 3:", round(np.mean(ano3),3))
+# ao substituirmos no ano 1 o valor do mês de agosto, por valor elavado, ja teremos uma forte mudança no valor da média
+```
+
+# Variância
+
+<p ALIGN=justify>A variância é uma medida estatística e probabilística fundamental que desempenha um papel essencial na análise de dados, fornecendo insights sobre a dispersão e a estabilidade das informações. Tanto na abordagem estatística quanto na probabilística, a variância desempenha funções distintas, mas interligadas.</p>
+
+<p ALIGN=justify>Na estatística descritiva, a variância é uma ferramenta valiosa para avaliar o quão longe os valores de um conjunto estão da média. A variância $\sigma^2$ para a população, $s^2$ para a amostra é calculada como a média dos quadrados das diferenças entre cada ponto de dados e a média do conjunto. Isso proporciona uma medida da dispersão dos dados em relação à média.</p>
+
+<p ALIGN=justify>A fórmula para a variância populacional é:</p>
+
+$$\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (X_i - \mu)^2 $$
+
+<p ALIGN=justify>Onde $N$ é o tamanho da população, $X_i$ é cada valor individual, $\mu$ é a média da população.</p>
+
+<p ALIGN=justify>Considere duas turmas de alunos com médias idênticas, mas com variâncias diferentes. A Turma A tem uma variância de 10, indicando uma dispersão moderada, enquanto a Turma B tem uma variância de 30, indicando uma dispersão mais ampla. A variância oferece uma visão mais detalhada da variabilidade nos resultados.</p>
+
+<p ALIGN=justify>Na teoria das probabilidades, a variância é fundamental ao avaliar a dispersão de uma distribuição de probabilidade. Para uma variável aleatória discreta $X$, a variância $Var(X)$ é definida como:</p>
+
+$$Var(X) = E[(X - \mu)^2] $$
+
+<p ALIGN=justify>Onde $E$ é o operador de esperança e $\mu$ é a média da distribuição. A variância em termos probabilísticos fornece informações sobre a dispersão dos resultados possíveis em torno da média.</p>
+
+<p ALIGN=justify>Considere uma distribuição de probabilidade modelando o tempo de chegada de ônibus em uma parada. Uma variância baixa indicaria tempos consistentes, enquanto uma variância alta indicaria maior variabilidade nos tempos de chegada.</p>
+
+<p ALIGN=justify>A variância é uma medida versátil que desempenha um papel crucial em diversas disciplinas. Seja na estatística descritiva, fornecendo informações sobre a dispersão de dados, ou na teoria probabilística, auxiliando na compreensão da variabilidade em distribuições de probabilidade, a variância é uma ferramenta valiosa na análise de dados e na modelagem de fenômenos diversos.</p>
+
+<p ALIGN=justify>A variância de uma variável aleatória é uma estimativa do espalhamento da distribuição de probabilidade ao redor da média. Para variáveis aleatórias, a variância $\sigma_{X}^{2}$ é dada pela esperança da distância quadrática de cada saída para o valor médio da distribuição.</p>
+
+$$\sigma_{X}^{2} = Var(X) \\
+  \sigma_{X}^{2}= E[(X-\mu_x)^2] \\
+   \sigma_{X}^{2}  = \sum_x (x-\mu_x)^2 P[X=x]\tag{8.35}$$
+
+<p ALIGN=justify>Para uma variável aleatória contínua com função de densidade $f_{X}(x)$, a definição análoga de variância é dada por:</p>
+
+$$\sigma_{x}^{2} = \int_{-\infty}^{\infty} (x-\sigma_x)^2 \cdot f(X)x \,dx \tag{8.36}$$
+
+<p ALIGN=justify>Uma equação simplificada pode ser mais usual na definição da variância, conforme mostrado na Equação 8.36.</p>
+
+$$ 
+\sigma^{2} = \frac{1}{N-1} \sum_{n=1}^{N} (x_n - \hat{\mu}_{x})^2 \tag{8.37}
+$$
+
+<p ALIGN=justify>O fator N/(N – 1) que aparece no lado direito da Eq  é devido à consideração de que as mesmas $N$ observações são utilizadas para estimar o valor médio . Com este fator, o valor esperado do lado direito é $\sigma^{2}$ $Z$ e, conseqüentemente, a Equação 8.37 é um estimador não polarizado da variância. Dizemos que é um estimador não polarizado de $g$.</p>
+
+<p ALIGN=justify>Se considerarmos $X$ como uma variável aleatória representando observações da tensão de um sinal aleatório, então a variância representa a potência CA do sinal. O segundo momento de $X$, $E[X2]$, também é chamado valor médio quadrático do sinal aleatório e representa fisicamente a potência total do sinal.</p>
+
+```{python}
+import random
+
+# Defina o tamanho do conjunto de dados
+tamanho_do_conjunto = 10
+
+# Gere uma lista de números aleatórios
+conjunto_de_dados = [random.uniform(0, 3) for _ in range(tamanho_do_conjunto)]
+
+# Calcule a média dos números no conjunto de dados
+media = sum(conjunto_de_dados) / tamanho_do_conjunto
+
+# Imprima o conjunto de dados e a média
+print("Conjunto de Dados:", conjunto_de_dados)
+print("Média:", media)
+
+# Calcule a média dos números no conjunto de dados
+media = sum(conjunto_de_dados) / tamanho_do_conjunto
+
+# Calcule a variância dos números no conjunto de dados
+variancia = sum((x - media) ** 2 for x in conjunto_de_dados) / (tamanho_do_conjunto - 1)
+
+# Imprima a variância
+print("Variância:", variancia)
+```
+
+# Covariância
+
+<p ALIGN=justify>A covariância é uma medida estatística essencial que quantifica a relação linear entre duas variáveis aleatórias. Em probabilidade e estatística, seu papel é fundamental para compreender a interdependência entre variáveis e fornecer insights valiosos sobre o comportamento conjunto de distribuições de probabilidade.</p>
+
+<p ALIGN=justify>Também de importância na análise de sistemas de comunicação são as medidas estatísticas entre duas variáveis aleatórias. A covariância de duas variáveis aleatórias, X e Y, é dada pelo valor esperado do produto das duas variáveis aleatórias. A covariância entre duas variáveis aleatórias, $X$ e $Y$, é expressa como:</p>
+
+$$\text{Cov}(X, Y) = E[(X - \mu_X) \cdot (Y - \mu_Y)] \tag{8.39}$$
+
+<p ALIGN=justify>Podemos expandir esta equação para obter:</p>
+
+$$\text{Cov}(XY) =E[XY] - \mu_{x}\mu{y} \tag{8.40}$$
+
+<p ALIGN=justify>Onde $E$ denota o operador de esperança, e $\mu_X$ e $\mu_Y$ são as médias de $X$ e $Y$, respectivamente.
+Se as duas variáveis aleatórias forem contínuas com densidade comum fX, Y(x, y), então o termo de esperança da Eq. é dado por:</p>
+
+$$E[XY] =  \int_{-\infty}^{\infty}  \int_{-\infty}^{\infty} xy \cdot f_{X,Y}(x,y) \,dxdy \tag{8.41}$$
+
+<p ALIGN=justify>Se as duas variáveis aleatórias forem independentes, então:</p>
+
+$$E[XY] =  \int_{-\infty}^{\infty}  \int_{-\infty}^{\infty} xy \cdot f_{X,Y}(x,y) \,dxdy$$
+
+$$ =  \int_{-\infty}^{\infty} x \cdot f_{X}(x) \,dx \int_{-\infty}^{\infty} y \cdot f_{Y}(y) \,dy$$
+
+$$ = E[X]E[Y] \tag{8.42}$$
+
+<p ALIGN=justify>Como poderia ser intuitivamente esperado. Substituindo este resultado na Equação 8.40, vemos que a covariância de variáveis aleatórias independentes é zero. Deve ser observado, entretanto, que o oposto nem sempre é verdadeiro: covariância zero não implica, em geral, em independência.</p>
+
+
+# Interpretação Probabilística
+
+A. **Covariância Positiva:** Indica que, em média, quando uma variável é maior que sua média, a outra variável também tende a ser maior que sua média. Sinaliza uma relação positiva.
+
+B. **Covariância Negativa:** Indica que, em média, quando uma variável é maior que sua média, a outra variável tende a ser menor que sua média. Indica uma relação negativa.
+
+C. **Covariância Zero:** Sugere ausência de uma relação linear óbvia entre as variáveis. No entanto, não implica independência total.
+
+
+
+# Covariância Amostral
+
+<p ALIGN=justify>Em situações práticas, lidamos frequentemente com amostras em vez de populações inteiras. A covariância amostral é calculada por:</p>
+
+$$\text{Cov}_{\text{amostral}}(X, Y) = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{X}) \cdot (y_i - \bar{Y}) $$
+
+<p ALIGN=justify>onde $n$ é o tamanho da amostra, $x_i$ e $y_i$ são as observações individuais, e $\bar{X}$ e $\bar{Y}$ são as médias amostrais.</p>
+
+<p ALIGN=justify>A covariância desempenha um papel crucial na compreensão das relações entre variáveis aleatórias em probabilidade e estatística, proporcionando uma base sólida para análises mais avançadas e tomada de decisões informadas.</p>
+
+<p ALIGN=justify>Vamos considerar um exemplo em que queremos calcular a covariância entre as alturas (em centímetros) e os pesos (em quilogramas) de um grupo de pessoas. A covariância é uma medida que indica como duas variáveis se comportam juntas em termos de desvio em relação às médias.</p>
+
+# Contextualização do Problema
+
+<p ALIGN=justify>Suponha que tenhamos as seguintes listas de alturas e pesos de um grupo de pessoas:</p>
+
+```{python}
+alturas = [160, 165, 170, 175, 180]  # Alturas em centímetros
+pesos = [50, 60, 65, 70, 75]  # Pesos em quilogramas
+```
+
+<p ALIGN=justify>Queremos calcular a covariância entre essas duas variáveis para entender como elas variam juntas.</p>
+
+# Cálculo da Covariância
+
+<p ALIGN=justify>A fórmula para calcular a covariância amostral entre duas variáveis X e Y é dada por:</p>
+
+$$ \text{cov}(X, Y) = \frac{\sum_{i=1}^{n}(x_i - \bar{X})(y_i - \bar{Y})}{n-1} $$
+
+<p ALIGN=justify>Onde:</p>
+
+- $x_i$ e $y_i$ são as observações individuais de $X$ e $Y$, respectivamente.
+
+- $\bar{X}$ e $\bar{Y}$ são as médias de $X$ e $Y$, respectivamente.
+
+- $n$ é o número de observações.
+
+# Passo a Passo do Cálculo
+
+1. Calcular as médias de altura $(\bar{X})$ e peso $(\bar{Y})$.
+
+2. Calcular as diferenças entre cada altura e a média de altura $(x_i - \bar{X})$ e cada peso e a média de peso $(y_i - \bar{Y})$.
+
+3. Multiplicar as diferenças correspondentes $(x_i - \bar{X}) \times (y_i - \bar{Y})$.
+
+4. Somar todos os produtos calculados.
+
+5. Dividir a soma pelo número de observações menos 1 $(n-1)$ para obter a covariância amostral.
+
+
+```{python}
+import numpy as np
+
+# Dados
+alturas = np.array([160, 165, 170, 175, 180])
+pesos = np.array([50, 60, 65, 70, 75])
+
+# Passo 1: Calcular as médias
+media_alturas = np.mean(alturas)
+media_pesos = np.mean(pesos)
+
+# Passo 2: Calcular as diferenças
+diff_alturas = alturas - media_alturas
+diff_pesos = pesos - media_pesos
+
+# Passo 3: Multiplicar as diferenças correspondentes
+produtos = diff_alturas * diff_pesos
+
+# Passo 4: Somar todos os produtos
+soma_produtos = np.sum(produtos)
+
+# Passo 5: Calcular a covariância amostral
+covariancia = soma_produtos / (len(alturas) - 1)
+
+print(f'A covariância entre alturas e pesos é: {covariancia}')
+
+```
+
+# [Volta a Página Inicial 🏠](Página-Inicial.html)

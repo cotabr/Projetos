@@ -1,0 +1,157 @@
+---
+title: "Capítulo 8.4 - Váriaveis Aleatórias Gaussianas"
+author: 
+- Denilson Silva (Discente)
+- Dr. Rafael Suzuki Bayma (Docente)
+date: "`r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  rmdformats::readthedown
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+```
+
+<p ALIGN=justify>A distribuição normal é um modelo bastante útil na estatística, e não seria uma surpresa pois a soma de efeitos independentes (ou efeitos não muito correlacionados) deveriam, se houvesse muitos desses, se distribuir normalmente (sempre sujeito a certos pressupostos).</p>
+
+<p ALIGN=justify>Nos séculos dezoito e dezenove, alguns matemáticos e físicos desenvolveram uma função densidade de probabilidade que descrevia os erros experimentais obtidos em medidas físicas Caire, 2012. De certa forma todo e qualquer processo de mensuração está sujeito a um erro de medida. Esse erro pode ter diferentes fontes, desde a variação de tempertura, tempo, entre inúmeras outras características não identificáveis.</p>
+
+<p ALIGN=justify>Na época (século dezoito) a sua aplicação inicial era apenas como uma conveniente aproximação da distribuição binomial, mais tarde no século XIX a distribuição normal ganhou importância com os trabalhos de Abraham de Moivre (em The Doctrine of Chances), Pierre Simon Laplace e Carl Friedrich Gauss.</p>
+
+<p ALIGN=justify>A variável aleatória Gaussiana possui um importante papel em diversas aplicações e é a variável aleatória mais geralmente encontrada na análise estatística de sistemas de comunicação. Também chamada como distribuição normal, a mesma depende de parâmetros bem definidos como:</p>
+
+\begin{align*}
+Var (X) &=  \sigma^{2}\\
+Dp (X) &= \sigma\\
+E(X) &= \mu\\
+\end{align*}
+
+<p ALIGN=justify>A curva de distribuição normal, frequentemente chamada de "curva em sino" ou "curva gaussiana", possui características distintas que a tornam uma ferramenta fundamental em estatística e análise de dados.</p>
+
+<p ALIGN=justify>Uma das principais características da distribuição normal é sua simetria em relação à média. A curva é perfeitamente simétrica, o que significa que metade da área total sob a curva está à direita da média e a outra metade à esquerda. Esse padrão simétrico contribui para a forma de sino da curva.</p>
+
+<p ALIGN=justify>O ponto mais alto da curva está localizado na média da distribuição, conferindo à curva um pico no centro, adicionando à sua forma característica de sino. À medida que você se afasta do centro (média) em ambas as direções, a curva se aproxima infinitamente do eixo x, mas nunca o toca. Isso implica que a probabilidade de eventos extremos é muito baixa, mas nunca é zero.</p>
+
+<p ALIGN=justify>A "Regra Empírica" ou "68-95-99.7 Regra" é uma característica importante da distribuição normal. Aproximadamente 68% dos dados estão dentro de um desvio padrão da média, 95% estão dentro de dois desvios padrão, e 99.7% estão dentro de três desvios padrão. Essa regra fornece uma maneira rápida de avaliar a dispersão dos dados em uma distribuição normal.</p>
+
+<p ALIGN=justify>Além disso, a distribuição normal é completamente caracterizada por seus dois parâmetros: a média (μ) e o desvio padrão (σ). Se esses parâmetros são conhecidos, toda a distribuição é conhecida.</p>
+
+<p ALIGN=justify>O Teorema Central do Limite é outra propriedade fundamental. Ele estabelece que, para amostras suficientemente grandes de uma população, a distribuição da média da amostra se aproxima de uma distribuição normal, independentemente da forma da distribuição original.</p>
+
+<p ALIGN=justify>A forma de sino da curva normal e suas propriedades têm aplicações generalizadas em estatística e ciência, sendo usada para modelar uma variedade de fenômenos naturais, como altura, peso, erros de medição, pontuações em testes padronizados, entre outros. Essa distribuição desempenha um papel crucial na compreensão de padrões em dados e na realização de inferências estatísticas.</p>
+
+<p ALIGN=justify>Uma variável aleatória Gaussiana é uma variável aleatória contínua com função de densidade dada por:</p>
+
+$$f_{X}(x) = \frac{1}{\sqrt{2 \pi \sigma_{X}}} exp^{\alpha} \tag{8.48}$$
+
+<p ALIGN=justify>Sendo $\alpha$:</p>
+
+$$\alpha =-\frac{(x - \mu_{X})^{2}}{2 \sigma^{2}_{x}}$$
+
+<p ALIGN=justify>Na qual a variável aleatória Gaussiana $X$ possui média $\mu_{X}$ e variância $\sigma^{2}_{X}$. Esta função de 
+densidade se estende de $-\infty\quad \text{a} \quad \infty$, sendo simétrica com relação a média $\mu_{X}$. Uma variável aleatória Gaussiana possui diversas propriedades que serão ditas sem prova:</p>
+
+1. Uma variável aleatória Gaussiana é completamente caracterizada por sua média e variância.
+
+2. Uma variável aleatória Gaussiana mais uma constante é outra variável aleatória Gaussiana com a média ajustada pela constante.
+
+3. Uma variável aleatória Gaussiana multiplicada por uma constante é outra variável aleatória Gaussiana na qual tanto a média quanto a variância são afetadas pela constante.
+
+4. A soma de duas variáveis aleatórias Gaussianas também é uma variável aleatória Gaussiana.
+
+5. A soma ponderada de N variáveis aleatórias Gaussianas é uma variável aleatória Gaussiana.
+
+6. Se duas variáveis aleatórias Gaussianas possuem covariância nula (não correlacionadas), elas também são independentes
+
+<p ALIGN=justify>Exceto pelas Propriedades 2 e 3, estas propriedades não são válidas, em geral, para outros tipos de variáveis aleatórias.Para o caso especial de uma variável aleatória Gaussiana com média zero, $\mu_{X} = 0$, e variância unitária, $\sigma^{2}_{X}= 1$, a função de densidade é dada por:</p>
+
+$$f_{X}(x) =\frac{1}{\sqrt{2 \pi}} e^{-x^{2}/2} \tag{8.49}$$
+
+```{python, fig.align='center', fig.width=6, fig.height=5}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# Parâmetros da distribuição normal
+mu = 0  # média
+sigma = 1  # desvio padrão
+
+# Gere dados para a distribuição normal
+x = np.linspace(mu - 3*sigma, mu + 3*sigma, 1000)  # valores ao longo do eixo x
+
+# Calcule a função de densidade de probabilidade (PDF) para a distribuição normal
+pdf = norm.pdf(x, mu, sigma)
+
+# Crie o gráfico
+plt.plot(x, pdf, label='Distribuição Normal')
+
+# Adicione linhas para média, desvio padrão e variância
+plt.axvline(mu, color='r', linestyle='--', label='Média')
+plt.axvline(mu + sigma, color='g', linestyle='--', label='Média + Desvio Padrão')
+plt.axvline(mu - sigma, color='g', linestyle='--', label='Média - Desvio Padrão')
+plt.axvline(mu + 2*sigma, color='b', linestyle='--', label='Média + 2*Desvio Padrão')
+plt.axvline(mu - 2*sigma, color='b', linestyle='--', label='Média - 2*Desvio Padrão')
+plt.axvline(mu + 3*sigma, color='purple', linestyle='--', label='Média + 3*Desvio Padrão')
+plt.axvline(mu - 3*sigma, color='purple', linestyle='--', label='Média - 3*Desvio Padrão')
+
+# Adicione rótulos e título
+plt.title('Distribuição Normal com Média, Desvio Padrão e Variância')
+plt.xlabel('Valores')
+plt.ylabel('Densidade de Probabilidade')
+plt.legend()
+
+# Exiba o gráfico
+plt.show()
+
+```
+
+<p ALIGN=justify>A função de distribuição desta variável aleatória Gaussiana normalizada é dada pela integral desta função:</p>
+
+\begin{align*}
+F_{X}(x) &= \int_{-\infty}^{x} f_{X}(s)\,ds\\
+&=\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} e^{-s^{2}/2}\,ds\tag{8.50}
+\end{align*}
+
+<p ALIGN=justify>Não existe solução analítica para esta integral, mas, devido ao frequente aparecimento de integrais deste tipo, várias funções relacionadas foram definidas e tabuladas.</p>
+
+<p ALIGN=justify>A função $Q$, também conhecida como função Q-complementar, está relacionada à função de distribuição acumulativa (CDF) da distribuição normal padrão. A distribuição normal padrão tem uma média $\mu$ de 0 e um desvio padrão $\sigma$ de 1. A função $Q$ é o complemento da função de distribuição acumulativa e é frequentemente usada em teoria de probabilidade e estatística.</p>
+
+<p ALIGN=justify>A função $Q(x)$ é definida como:</p>
+
+$$Q(x) = 1 - \text{CDF}(x)$$
+
+<p ALIGN=justify>Onde a CDF é a função de distribuição acumulativa da distribuição normal padrão. Em outras palavras, a função $Q(x)$ dá a probabilidade de um valor aleatório de uma distribuição normal padrão ser maior do que $x$.</p>
+
+<p ALIGN=justify>A função $Q$ é especialmente útil em contextos nos quais você está interessado nos eventos que ocorrem na cauda direita (cauda superior) de uma distribuição normal padrão. Ela fornece a probabilidade de um valor ser maior do que um determinado limiar.</p>
+
+<p ALIGN=justify>Matematicamente, a CDF da distribuição normal padrão é muitas vezes denotada por $\Phi(x)$, e a função $Q(x)$ é dada por $Q(x) = 1 - \Phi(x)$.</p>
+
+<p ALIGN=justify>Essa função é frequentemente usada em problemas de teoria de probabilidade, comunicações digitais, teoria da detecção, e em outras áreas em que é necessário calcular probabilidades associadas com caudas superiores de distribuições normais. Em muitos casos, as tabelas de valores críticos para a função $Q$ são fornecidas para facilitar cálculos rápidos.</p>
+
+<p ALIGN=justify>A função relacionada, geralmente utilizada no contexto de comunicações, é a função $Q$, definida por:</p>
+
+\begin{align*}
+Q_{X}(x) &= \frac{1}{\sqrt{2 \pi}} \int_{x}^{\infty} e^{-s^{2}/2}\,ds\\
+&=  1 - F_{X}(x)
+\end{align*}
+
+<p ALIGN=justify>A última linha da Equação 8.51 indica que a função Q é o complemento da função de distribuição Gaussiana normalizada.</p>
+
+<p ALIGN=justify>Reiterando: com variáveis aleatórias Gaussianas, a média e a variância possuem importância particular, pois elas caracterizam completamente a função de distribuição.</p>
+
+```{python}
+from scipy.stats import norm
+
+# Valor para o qual queremos calcular Q(x)
+x = 1.5
+
+# Calculando a função Q
+q_value = norm.sf(x)
+
+# Exibindo o resultado
+print(f'A função Q({x}) é: {q_value:.4f}')
+
+```
+
+# [Volta a Página Inicial 🏠](Página-Inicial.html)

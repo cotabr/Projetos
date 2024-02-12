@@ -1,0 +1,122 @@
+---
+title: "Capítulo 8.3 - Transformação de Variáveis Aleatórias"
+author: 
+- Denilson Silva (Discente)
+- Dr. Rafael Suzuki Bayma (Docente)
+date: "`r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  rmdformats::readthedown
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+```
+
+<p ALIGN=justify>Em sistema de comunicação, sinais aleatórios podem ser processados por diversos dispositivos, lineares ou não lineares, antes da saída final. Se representarmos um sinal aleatório por uma variável aleatória e soubermos sua função de distribuição antes do processamento, é lógico perguntar: Qual será a nova função de distribuição da variável aleatória após o 
+processamento?</p> 
+
+<p ALIGN=justify>Nesta seção iremos fornecer algumas respostas a esta questão quando a transformação é de um-para-um. Por exemplo, assuma que a variável aleatória X com distribuição $f_{X}(x)$ é transformada para $Y = ax + b$. Qual é a função de distribuição de $Y$?</p>
+
+<p ALIGN=justify>Respondemos a esta questão retornando aos fundamentos da probabilidade. Considere a probabilidade de $X$ pertencer ao conjunto $A$, sendo $A$ um subconjunto da linha real. Se $X ∈ A$, então temos que $Y ∈ B$, sendo B definido por $B = aA + b$, logo, temos:</p>
+
+$$P[X \in A]  = P[Y \in B] \tag{8.43}$$
+
+<p ALIGN=justify>Suponha que o conjunto B é a linha real de $-\infty$ a y, que escrevemos por [$-\infty$, y]. Então, o conjunto A é dado por A = (B – b)/a = ($-\infty$, (y – b)/a). Portanto, podemos escrever:</p>
+
+\begin{align*}
+F_{Y}(y) &= P[Y  \in ( -\infty, y]]\\
+&= P[X  \in ( -\infty, (y-b)/a]]\\
+&= F_{X}\left(\frac{y-b}{a}\right)\tag{8.44}
+\end{align*}
+
+<p ALIGN=justify>O que define a relação entre as funções de distribuição da variável aleatória original $X$ e da variável aleatória transformada $Y$. Em geral, se $Y = g(X)$, é uma transformação de um para-um da variável aleatória $X$ para a variável aleatória $Y$, então a função de distribuição de $Y$ é dada por:</p>
+
+$$F_{Y}(y) = F_{X}\left(g^{-1}(y)\right)\tag{8.45}$$
+
+<p ALIGN=justify>Na qual o símbolo $g_{–1}(y)$ representa a função inversa de $g(y)$. Pode ser mostrado que se $X$ possui densidade $f(x)$, então a densidade de $Y$ é $f_{X}\left(g_{-1}(y)\right) |\frac{dg_{-1}(y)}{dy}|$, desde que a transformação seja diferenciável.</p>
+
+<p ALIGN=justify>Seja X uma variável aleatória com densidade conhecida. Deseja-se encontrar a densidade de uma nova variável aleatória definida por: $Y = h(X)$, também conhecida. </p>
+
+1. Se $X$ for uma variável aleatória discreta, então $Y = h(X)$ também será uma variável aleatória discreta.
+
+2. Se $X$ for uma variável aleatória contínua, então Y = $h(X)$ também será uma variável aleatória contínua.
+ 
+<p ALIGN=justify>Perceba que não há restrição quanto à variável ser discreta ou contínua, contudo, para cada tipo usa-se uma abordagem diferente. No caso das váriaveis aleatórias discretas:</p>
+
+<p ALIGN=justify>Se $X$ é uma variável aleatória discreta e $Y = h(X)$, pode-se definir a função de probabilidade de Y a partir da probabilidade dos eventos equivalentes para a variável $X$, segue o exemplo abaixo:</p>
+
+<p ALIGN=justify>Seja $X$ uma variável aleatória discreta com função de probabilidade:</p>
+
+$$f(X) = P(X = x) = (0,6)x-1\cdot(0,4) \textrm{, sendo }  x = 1,2,3,..$$
+
+<p ALIGN=justify>Seja $Y = h(X) = 2X-2$, qual a função de probabilidade $g(Y)$?</p>
+
+<p ALIGN=justify>Quando $x$ for igual a $1$, $y$ será igual a $0$, então: $P(X = 1) = P(Y = 0) = 0,4$</p>
+
+<p ALIGN=justify>Seguindo essa lógica:</p>
+
+$X = 2 → Y = 2: P(X = 2) = P(Y = 2) = 0,24$
+
+$X = 3 → Y = 4: P(X = 3) = P(Y = 4) = 0,14$
+
+<p ALIGN=justify>Perceba que $Y = 2X-2 → X = Y/2+1$. Sendo assim, $P(Y = y) = (0,6)y/2\cdot(0,4)$</p>
+
+<p ALIGN=justify>Sejam $X$ uma variável aleatória contínua e $Y = h(X)$. O método da função de distribuição exige três passos para encontrar a densidade de $Y$.</p>
+ 
+1. Encontre o conjunto de todos os valores possíveis de $Y$.
+
+2. Calcule a função de distribuição de $Y$, ou seja, para cada valor $y$ da variável aleatória $Y$ defina $G(y) = P(Y ≤ y)$ escrevendo-a em termos do evento equivalente para $X$.
+
+3. Calcule a densidade $g(y)$ fazendo a derivada de $G(y)$ com relação a $y$.
+ 
+<p ALIGN=justify>Note que esse método é bastante geral pois não impõe nenhuma condição à função $h(X)$ que relaciona as variáveis $X$ e $Y$. Por exemplo, não é necessário que essa função seja injetora.</p>
+
+# Método da Função de Distribuição
+ 
+<p ALIGN=justify>Seja $X$ uma variável aleatória contínua, com função densidade de probabilidade $f(x)$ e função de distribuição $F(x)$ definidas a seguir. Vamos calcular a densidade $g(y)$, sendo: $Y =-\frac{1}{\lambda} ln(X)$, onde $λ > 0$.</p>
+
+$$f(x) =
+    \begin{cases}
+        1, \text{se } x \in (0,1) \\
+        0, \text{se } x \notin (0,1)
+    \end{cases}$$
+
+$$F(x) = P(X \leq x) = 
+    \begin{cases}
+        0, \text{se } x \leq 0 \\
+        x, \text{se } x \in (0,1) \\
+        1, \text{se } x \geq 1
+    \end{cases}$$    
+
+
+<p ALIGN=justify>Se você já estudou as distribuições de variáveis aleatórias contínuas, note que $X$ é $Unif(0,1)$.</p>
+
+<p ALIGN=justify>Perceba que $X$ só assume valores no intervalo $(0,1)$, isso quer dizer que $Y ≥ 0$.</p>
+ 
+<p ALIGN=justify>A função de distribuição de $Y$ é:</p>
+
+$$G(y) =P(Y\leq y) =P\left( -\frac{1}{\lambda}ln(X)\leq y \right) = P(ln(X)\geq-\lambda y) = P(X \geq e^{-\lambda y}) =1 -P(X \leq e^{-\lambda y}) = 1 - e^{-\lambda y}$$
+ 
+<p ALIGN=justify>A densidade de $Y$ é encontrada a partir da derivada de $G(y)$:</p>
+ 
+$$g(y)=\frac{dG(y)}{dy} =-(-\lambda )e^{-\lambda y}=\lambda e^{-\lambda y} ,\quad \text{sendo} \quad y \geq 0 \quad \text{e} \quad \lambda > 0$$
+
+<p ALIGN=justify>Conclui-se que a partir de uma variável uniforme $(0,1)$ é possível gerar uma variável exponencial com média $1/λ$.</p>
+ 
+<p ALIGN=justify>Existem certas funções que possuem uma fórmula para calcular diretamente a densidade $g(y)$. Uma destas se encontra definida abaixo:</p>
+
+<p ALIGN=justify>Sejam $X$ uma v.a. contínua, com densidade $f(x)$ e função de distribuição $F(x)$, e $Y = X^{2}$. A densidade de $Y$ é definida por:</p>
+
+$$g(y) = \frac{1}{2 \sqrt{}y} [f(\sqrt{y})+f(-\sqrt{y})]$$
+
+<p ALIGN=justify>É importante ressaltar que o intervalo em que $X$ é definido pode mudar essa expressão.</p>
+
+$$
+    \begin{cases}
+        X ≥ 0, \text{então } f(y^{1/2}) = 0 \\
+       X ≤ 0, \text{se } f(y^{1/2}) = 0
+    \end{cases}
+$$
+
+# [Volta a Página Inicial 🏠](Página-Inicial.html)

@@ -1,0 +1,49 @@
+---
+title: "Capítulo 8.5 - Teorema do Limite Central"
+author: 
+- Denilson Silva (Discente)
+- Dr. Rafael Suzuki Bayma (Docente)
+date: "`r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  rmdformats::readthedown
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+```
+
+<p ALIGN=justify>Um resultado importante da teoria de probabilidade que está muito relacionado com a distribuição Gaussiana é o teorema do limite central. Seja $X_1$, $X_2$, ..., $X_n$ um conjunto de variáveis aleatórias com as seguintes propriedades:</p>
+
+1. Os $X_k$ com $k = 1, 2, 3, ..., n$ são estatisticamente independentes.
+
+2. Todos os $X_k$ possuem a mesma função densidade de probabilidade.
+
+3. Tanto a média quanto a variância existem para cada $X_k$.Não assumimos que a função de densidade de $X_k$ é Gaussiana. Seja $Y$ uma nova variável aleatória definida por:
+
+$$
+Y=\sum^n_{k=1} X_k\tag{8.56}
+$$
+<p ALIGN=justify>Então, de acordo com o teorema do limite central, a variável aleatória normalizada:</p>
+
+$$
+Z=\frac{Y-E[Y]}{\sigma_Y}\tag{8.57}
+$$
+
+<p ALIGN=justify>Aproxima-se de uma variável aleatória Gaussiana com média zero e variância unitária quando o número de variáveis aleatórias $X_1$, $X_2$, ..., $X_n$ aumenta sem limite. Ou seja, quando $n$ se torna grande, a distribuição de $Z$ aproxima-se da de uma variável aleatória Gaussiana com média nula e variância unitária, como mostrado por:</p>
+
+$$
+F_Z(z)\rightarrow \int_{-\infty}^z \frac{1}{\sqrt{2\pi}}exp\left\{-\frac{s^2}{2}\right\}ds\tag{8.58}
+$$
+
+<p ALIGN=justify>Esta é a afirmação matemática do teorema do limite central. Em palavras, a distribuição normalizada da soma de variáveis aleatórias independentes distribuídas identicamente aproxima-se de uma distribuição Gaussiana quando o número de variáveis aleatórias aumenta, independente das distribuições individuais. Portanto, variáveis aleatórias Gaussianas são comuns porque elas caracterizam as propriedades assintóticas de vários outros tipos de variáveis aleatórias.</p>
+
+<p ALIGN=justify>Quando n é finito, a aproximação Gaussiana da Equação 8.58 é mais precisa na porção central da função de densidade (por isso limite central) e menos precisa nas “caudas” da função de densidade.</p>
+
+# [Volta a Página Inicial 🏠](Página-Inicial.html)
+
+
+
+
+
+
