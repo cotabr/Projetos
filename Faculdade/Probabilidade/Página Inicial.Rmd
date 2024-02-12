@@ -146,4 +146,4 @@ library(reticulate)
 
 # Referências e Downloads
 
-[HAYKIN, Simon; MOHER, Michael. **Introdução aos sistemas de comunicação**. Bookman Editora, 2009.](LT)
+[HAYKIN, Simon; MOHER, Michael. **Introdução aos sistemas de comunicação**. Bookman Editora, 2009.](https://drive.google.com/file/d/1qO8wKgWpBpcG5kQNiABjuEwbJangy1n5/view?usp=sharing)
