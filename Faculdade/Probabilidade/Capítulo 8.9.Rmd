@@ -1,29 +1,79 @@
 ---
-title: "Capítulo 8.6 - Processos Aleatórios"
-output: html_document
-date: "2024-02-07"
+title: "Capítulo 8.9 - Processos Gaussianos"
+author: 
+- Denilson Silva (Discente)
+- Dr. Rafael Suzuki Bayma (Docente)
+date: "`r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  rmdformats::readthedown
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
 ```
 
-## R Markdown
+<p ALIGN=justify>Até aqui, apresentamos a teoria de processos aleatórios em termos gerais. No restante deste capítulo, iremos considerar esta teoria no contexto de alguns processos aleatórios importantes que são geralmente encontrados no estudo de sistemas de comunicação.</p>
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+<p ALIGN=justify>Vimos como variáveis aleatórias Gaussianas possuem um papel importante em sistemas de comunicação pois (i) vários processos físicos que geram ruído em sistemas de comunicação podem ser considerados como tendo, aproximadamente, uma distribuição Gaussiana e (ii) variáveis aleatórias Gaussianas podem ser matematicamente tratadas e, portanto, são convenientes de serem utilizadas.</p>
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+<p ALIGN=justify>Similarmente, um processo Gaussiano possui um importante papel no estudo de processos aleatórios por duas razões. Primeiro, processos Gaussianos possuem várias propriedades que tornam resultados analíticos possíveis. Segundo, os processos aleatórios produzidos por fenômenos físicos são, geralmente, tais que o modelo Gaussiano é apropriado.</p>
 
-```{r cars}
-summary(cars)
-```
+<p ALIGN=justify>Antes de definirmos um processo Gaussiano, devemos fornecer alguma base sobre a distribuição comum de múltiplas variáveis aleatórias Gaussianas. A distribuição comum de $N$ variáveis aleatórias Gaussianas pode ser escrita como:
 
-## Including Plots
+$$f_X(x)=\frac{1}{(2\pi)^{N/2}|\Lambda|^{1/2}}\exp{\{-(x-\mu)\Lambda^{-1}(x-\mu)^{T}/2\}}\tag{8.90}$$
 
-You can also embed plots, for example:
+<p ALIGN=justify>A qual é chamada de distribuição Gaussiana multivariável. Na Equação 8.90, as grandezas respectivas são:</p>
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+<p ALIGN=justify>$\mathbf{X} = (X_1 , X_2 , ..., X_N )$ representa o vetor $N$-dimensional de variáveis aleatórias Gaussianas.</p>
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+<p ALIGN=justify>$\mathbf{x} = (x_1 , x_2 , ..., x_N )$ é o vetor correspondente de indeterminadas.</p>
+
+<p ALIGN=justify>$\mathbf{\mu}= (E[X_1 ], E[X_2 ], ...,E[X_N ])$ é o vetor $N$-dimensional de médias.</p>
+
+<p ALIGN=justify>$\Lambda$ é a matriz $N$ por $N$ de covariância com elementos individuais dados por $\Lambda_{ij} = \textrm{Cov}(X_i , X_j )$.</p>
+ 
+<p ALIGN=justify>A notação $|\Lambda|$ representa o determinante da matriz $\Lambda$. Com esta definição de distribuição Gaussiana multivariável temos a base para a definição de um processo aleatório Gaussiano.</p>
+
+<p ALIGN=justify>Um processo aleatório $X(t)$, com $t$ assumindo os valores do conjunto $T$, é dito ser um processo Gaussiano se, para qualquer inteiro $k$ e qualquer subconjunto $\{t_1 , t_2 , ..., t_k \}$ de $T$, as $k$ variáveis aleatórias $\{X(t_1), X(t_2), ..., X(t_k)\}$ possuem distribuição Gaussiana comum. Ou seja, se para qualquer $k$, $f_{X(t_1), X(t_2),..., X(t_k)}(x_1, ..., x_k)$ possui densidade equivalente à Equação (8.90).</p>
+ 
+<p ALIGN=justify>Um processo Gaussiano possui as seguintes propriedades:</p>
+ 
+1. Se um processo Gaussiano é estacionário em sentido amplo, então ele também é estacionário em sentido estrito.
+
+2. Se um processo Gaussiano é aplicado a um filtro linear estável, então o processo aleatório $Y(t)$ produzido na saída do filtro também é Gaussiano.
+
+ 3. Se a integração é definida no sentido de média quadrática, então podemos alterar a or
+dem das operações de integração e esperanças com um processo aleatório Gaussiano.
+
+<p ALIGN=justify>A primeira propriedade vem da observação que se um processo Gaussiano é estacionário em sentido amplo, então (i) sua média não varia como o tempo e (ii) os elementos de $\Lambda_{ij}$ da matriz de covariância dependem apenas da diferença de tempo $t_i – t_j$ e não do $t$ absoluto. Como a distribuição comum $N$-dimensional de amostras de processos Gaussianos depende apenas da média e da covariância, pela Equação (8.90), um processo Gaussiano estacionário em sentido amplo também é estritamente estacionário.</p>
+
+<p ALIGN=justify>A segunda propriedade vem da observação de que a operação de filtragem pode ser escrita por:</p>
+
+$$Y(t)=\int^t_0h(t-s)X(s)\; ds \tag{8.91}$$
+
+<p ALIGN=justify>Se utilizarmos os três fatos:</p>
+
+1. A integral da Eq. (8.91) é definida como o limite médio quadrático do somatório:
+
+$$Y(t)=\lim_{\Delta s \rightarrow0}\sum_i h(t-i\; \Delta s)x(i\; \Delta s)\Delta s$$
+
+<p ALIGN=justify>Logo, observamos que o lado direito é a soma ponderada de variáveis aleatórias Gaussianas $X(i \; \Delta s)$.</p>
+
+2. Lembre-se das propriedades de variáveis aleatórias Gaussianas que a soma ponderada de variáveis aleatórias Gaussianas é outra variável aleatória Gaussiana.
+
+3. Se uma sequência de variáveis aleatórias Gaussianas converge no sentido de média quadrática, então o resultado é uma variável aleatória Gaussiana.
+
+<p ALIGN=justify>Estes três fatos juntos podem ser utilizados para provar que $Y(t)$ também é um processo aleatório Gaussiano.</p>
+
+<p ALIGN=justify>A terceira propriedade de processos Gaussianos implica em que se $Y(t)$ é dado pela Equação (8.91), então a média da saída é dada por:</p>
+
+\begin{align*}
+\mathbf{E}[Y(t)]&=\mathbf{E}\left[\int^t_0h(t-s)X(s) \; ds\right]\\
+&= \int^t_0h(t-s)\mathbf{E}[X(s)]ds\\
+&= \mu_Y(t)
+\end{align*}
+
+<p ALIGN=justify>Estes resultados são muito úteis em sistemas de comunicação, nos quais a filtragem linear de processos aleatórios ocorre bem frequentemente.</p>
+
+# [Volta a Página Inicial 🏠](Página-Inicial.html)
