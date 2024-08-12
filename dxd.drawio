@@ -1,9 +1,53 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.7.6">
   <diagram name="Página-1" id="-6qRexEgHzhczDnyAxJq">
-    <mxGraphModel>
+    <mxGraphModel dx="1105" dy="586" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Início: Variação Paramétrica" style="rounded=1;whiteSpace=wrap;fillColor=#ffcccc;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Ajustar Parâmetros do Controlador PI" style="rounded=0;whiteSpace=wrap;fillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="60" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Avaliou Estabilidade e Desempenho?" style="rhombus;whiteSpace=wrap;fillColor=#ccffcc;" vertex="1" parent="1">
+          <mxGeometry x="540" y="40" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Modificar Parâmetros do Veículo" style="rounded=0;whiteSpace=wrap;fillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="540" y="180" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Simular Cenários Operacionais Diferentes" style="rounded=0;whiteSpace=wrap;fillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="270" y="180" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Analisar Resposta do Sistema" style="rounded=0;whiteSpace=wrap;fillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="Fim: Análise Concluída" style="rounded=1;whiteSpace=wrap;fillColor=#ffcccc;" vertex="1" parent="1">
+          <mxGeometry x="70" y="310" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="2" target="3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="3" target="4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="4" target="5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="5" target="6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="6" target="7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="7" target="8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;" edge="1" parent="1" source="4" target="3">
+          <mxGeometry relative="1" as="geometry" />
+          <mxPoint x="250" y="280" as="sourcePoint" />
+          <mxPoint x="250" y="160" as="targetPoint" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
